@@ -39,7 +39,7 @@ class User < ActiveRecord::Base
                        
   # Create user account when signing in using Facebook for the first time
   def self.from_omniauth(auth)
-    where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
+    where(auth.slice(:provider, :uid)).first_or_initialize.tap do |user|
       user.provider = auth.provider
       user.uid = auth.uid
       user.name = auth.info.name
