@@ -35,6 +35,7 @@ gem 'mini_magick'
 # gem 'dropzonejs-rails'
 gem 'normalize-rails'
 gem 'geocoder'
+# gem 'awesome-share-buttons', github: 'evansobkowicz/awesome-share-buttons'
 gem 'rails_12factor', group: :production
 
 # Use ActiveModel has_secure_password
