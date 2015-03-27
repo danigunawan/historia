@@ -1,17 +1,14 @@
 OmniAuth.config.logger = Rails.logger
 
 Rails.application.config.middleware.use OmniAuth::Builder do
-  provider :facebook, ENV["facebook_app_id"], ENV["facebook_api_secret_key"],
+  provider :facebook, ENV["FACEBOOK_APP_ID"], ENV["FACEBOOK_API_SECRET_KEY"],
   :scope => 'email'
-  
-  provider :twitter, ENV["twitter_app_id"], ENV["twitter_api_secret_key"],
-  {
-    :secure_image_url => 'true',
-    :image_size => 'original',
-    :authorize_params => {
-      :force_login => 'true',
-      :lang => 'pt'
-    }
-  }
+
+  provider :google_oauth2, ENV["GOOGLE_CLIENT_ID"], ENV["GOOGLE_CLIENT_SECRET"]
+
+  # provider :twitter, ENV["TWITTER_API_KEY"], ENV["TWITTER_API_SECRET"],
+  # {
+  #   :scope => 'email'
+  # }
 end
 
