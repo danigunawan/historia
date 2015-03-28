@@ -1,23 +1,49 @@
-<div id="login-overlay">
-  <div class="social-container">
-    <div class="facebook-container">
-      <p>Sign in with Facebook</p>
-      <div class="overlay"></div>
-    </div>
-    <div class="google-container">
-      <p>Sign in with Google</p>
-      <div class="overlay"></div>
-    </div>
+<!-- Signup confirmation message -->
+<% flash.each do |message_type, message| %>
+  <div class="alert alert-<%= message_type %>">
+    <%= message %>
   </div>
-  <div class="general-container">
-    <div class="signup-container">
-      <p>Sign up</p>
-      <div class="overlay"></div>
-    </div>
-    <div class="signin-container">
-      <p>Sign in</p>
-      <div class="overlay"></div>
-    </div>
-  </div>
-<!--   <i class="fa fa-close fa-3x"></i> -->
+<% end %>
+<div class="hero">
+<!--   <#% @photos.each do |photo| %>  -->
+    <%= image_tag @photo.image %>
+<!--   <#% end %> -->
 </div>
+<i class="fa fa-bars fa-2x"></i>
+<div class="login-overlay">
+  <!-- Sign in email/password-->
+  <div class="signin-container">
+    <div class="general-overlay signin-form">
+      <h2>Sign in</h2>
+      <%= render :partial => 'sessions/form' %>
+    </div>
+  </div>
+
+  <div class="facebook-container">
+    <div class="overlay">
+      <%= link_to "/auth/facebook", title: "Log in with Facebook", id: "sign_in", class: "btn-fb-signin" do %>
+        <i class="fa fa-facebook fa-lg"></i>
+        <p class="btn-fb-text">Sign in with <strong>Facebook</strong></p>
+      <% end %>
+    </div>
+  </div>
+
+  <!-- Sign up email/password-->
+  <div class="signup-container">
+    <div class="general-overlay signup-form">
+      <h2>Sign up</h2>
+      <%= render :partial => 'users/form' %>
+    </div>
+  </div>
+
+  <div class="google-container">
+    <div class="overlay">
+      <%= link_to "/auth/google_oauth2", title: "Log in with Google", id: "sign_in", class: "btn-google-signin" do %>
+        <i class="fa fa-google fa-lg"></i>
+        <p class="btn-google-text">Sign in with <strong>Google</strong></p>
+      <% end %>
+    </div>
+  </div>
+  <i class="fa fa-close fa-2x"></i>
+</div>
+

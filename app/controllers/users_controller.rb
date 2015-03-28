@@ -6,10 +6,10 @@ class UsersController < ApplicationController
     @user = User.new user_params
     if @user.save
       session[:user_id] = @user.id
-      # flash[:success] = "You've successfully signed up!"
+      flash[:success] = "You've successfully signed up!"
       redirect_to root_path
     else
-      render :new
+      redirect_to root_path
     end
   end
 
