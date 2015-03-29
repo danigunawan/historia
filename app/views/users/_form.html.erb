@@ -7,23 +7,36 @@
   </div>
 <% end %>
 <%= form_for @user do |f| %>
-  <div class="form-group">
-    <%= f.label :name, 'Name' %>
-    <%= f.text_field :name, :autofocus => true, :required => true, :placeholder => 'Name'%>
+  <div class="form-group-left">
+    <div class="form-group">
+      <%= f.label :name do %>
+        <i class="fa fa-user fa-fw"></i>
+      <% end %>
+      <%= f.text_field :name, :autofocus => true, :required => true, :placeholder => 'Name' %>
+    </div>
+    <div class="form-group">
+      <%= f.label :email do %>
+        <i class="fa fa-envelope-o fa-fw"></i>
+      <% end %>
+      <%= f.email_field :email, :required => true, :placeholder => 'Email' %>
+    </div> 
   </div>
-  <div class="form-group">
-    <%= f.label :email, 'Email' %>
-    <%= f.email_field :email, :required => true, :placeholder => 'Email' %>
-  </div>
-  <div class="form-group">
-    <%= f.label :password, 'Password' %>
-    <%= f.password_field :password, :required => true, :placeholder => 'Password' %>
-  </div>
-  <div class="form-group">
-    <%= f.label :password_confirmation, 'Confirm password' %>
-    <%= f.password_field :password_confirmation, :required => true, :placeholder => 'Confirm password' %>
-  </div>
-  <div class="form-group">
-    <%= f.submit 'Sign up', :class => 'btn-signup-form' %>
+  <div class="form-group-right">
+    <div class="form-group">
+      <%= f.label :password do %>
+        <i class="fa fa-key fa-fw"></i>
+      <% end %>
+      <%= f.password_field :password, :required => true, :placeholder => 'Password' %>
+    </div>
+    <div class="form-group">
+      <%= f.label :password_confirmation do %>
+        <i class="fa fa-key fa-fw"></i>
+      <% end %>
+      <%= f.password_field :password_confirmation, :required => true, :placeholder => 'Confirm password' %>
+    </div>
+    <div class="form-group">
+      <%= f.submit 'Sign up', :class => 'btn-signup-form' %>
+    </div>
+    
   </div>
 <% end %>

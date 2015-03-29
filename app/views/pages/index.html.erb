@@ -9,12 +9,33 @@
     <%= image_tag @photo.image %>
 <!--   <#% end %> -->
 </div>
+<div class="nav-bar">
+  <% if @current_user %>
+    <% if @current_user.favourite_ids.include? tweet.id %>
+      <%= form_tag username_favourite_path(@current_user.username, tweet), :method => :put do %>
+        <%= hidden_field_tag :type, "unlike" %>
+        <button class="unfavourite"><i class="fa fa-heart-o fa-lg"></i></button>
+      <% end %>
+    <% else %>
+      <%= form_tag username_favourite_path(@current_user.username, tweet), :method => :put do %>
+        <%= hidden_field_tag :type, "like" %>
+        <button class="favourite"><i class="fa fa-heart-o fa-lg"></i></button>
+      <% end %>
+    <% end %>
+  <% end %>
+  <div class="like">
+    
+  </div>
+  <div class="learn">Learn</div>
+  <div class="game">Game</div>
+  <div class="share"><i class="fa fa-share-alt fa-lg"></i></div>
+</div>
 <i class="fa fa-bars fa-2x"></i>
 <div class="login-overlay">
   <!-- Sign in email/password-->
   <div class="signin-container">
     <div class="general-overlay signin-form">
-      <h2>Sign in</h2>
+      <h2>Got an account? Sign in!</h2>
       <%= render :partial => 'sessions/form' %>
     </div>
   </div>
@@ -31,7 +52,7 @@
   <!-- Sign up email/password-->
   <div class="signup-container">
     <div class="general-overlay signup-form">
-      <h2>Sign up</h2>
+      <h2>New to Historia? Sign up!</h2>
       <%= render :partial => 'users/form' %>
     </div>
   </div>
