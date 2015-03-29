@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   root :to => 'pages#index'
 
-  resources :users, :places, :likes, :photos
+  resources :users, :places, :likes, :photos, :pages
 
   resources :places do
     put :like, on: :member
