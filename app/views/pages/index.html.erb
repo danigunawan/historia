@@ -11,25 +11,19 @@
 
 <div class="nav-bar">
   <div class="like-container">
- <!--    <#% if @current_user %>
-      <#% if @current_user.like_ids.include? @place_id %>
-        <#%= form_tag likes_path(@current_user.id, @place_id), :method => :post do %>
-          <#%= hidden_field_tag :type, "unlike" %>
-          <button class="unlike">Like<i class="fa fa-heart fa-lg"></i></button>
-        <#% end %>
-      <#% else %>
-        <#%= form_tag likes_path, :method => :post do %>
-<!--           <#%= hidden_field_tag :place_id, :value => @photo[:place_id] %> -->
-   <!--          <button class="like"><i class="fa fa-heart-o fa-lg"></i></button>
-        <#% end %>
-      <#% end %>
-    <#% end %> -->
-    <% if current_user %>
-      <%= link_to "like",   like_place_path(@place, type: "like"), method: :put %>
-      <%= link_to "unlike", like_place_path(@place, type: "unlike"), method: :put %>
-    <% end %>
+<!--     <#% if current_user %> -->
+        <% if @current_user.place_ids.include? @place.id %>
+          <%= link_to like_place_path(@place, type: "unlike"), class: 'unlike', method: :put do %>
+            <i class="fa fa-heart fa-lg"></i>
+          <% end %>
+        <% else %>
+          <%= link_to like_place_path(@place, type: "like"), class: 'unlike', method: :put do %>
+            <i class="fa fa-heart-o fa-lg"></i>
+          <% end %>
+        <% end %>
+<!--     <#% end %> -->
   </div>
-  <div class="learn">Learn</div>
+  <div class="discover">Discover</div>
   <div class="game">Game</div>
   <div class="share"><i class="fa fa-share-alt fa-lg"></i></div>
 </div>
