@@ -1,5 +1,6 @@
 class PagesController < ApplicationController
   def index
-    @photo = Photo.random
+    @place = Place.random
+    # binding.pry
   end   
 end

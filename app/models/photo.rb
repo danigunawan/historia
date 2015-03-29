@@ -11,8 +11,4 @@
 
 class Photo < ActiveRecord::Base
   belongs_to :place
-
-  def self.random
-    Photo.order("RANDOM()").first
-  end
 end

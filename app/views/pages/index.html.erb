@@ -4,27 +4,30 @@
     <%= message %>
   </div>
 <% end %>
+
 <div class="hero">
-<!--   <#% @photos.each do |photo| %>  -->
-    <%= image_tag @photo.image %>
-<!--   <#% end %> -->
+  <%= image_tag @place.image %>
 </div>
+
 <div class="nav-bar">
-  <% if @current_user %>
-    <% if @current_user.favourite_ids.include? tweet.id %>
-      <%= form_tag username_favourite_path(@current_user.username, tweet), :method => :put do %>
-        <%= hidden_field_tag :type, "unlike" %>
-        <button class="unfavourite"><i class="fa fa-heart-o fa-lg"></i></button>
-      <% end %>
-    <% else %>
-      <%= form_tag username_favourite_path(@current_user.username, tweet), :method => :put do %>
-        <%= hidden_field_tag :type, "like" %>
-        <button class="favourite"><i class="fa fa-heart-o fa-lg"></i></button>
-      <% end %>
+  <div class="like-container">
+ <!--    <#% if @current_user %>
+      <#% if @current_user.like_ids.include? @place_id %>
+        <#%= form_tag likes_path(@current_user.id, @place_id), :method => :post do %>
+          <#%= hidden_field_tag :type, "unlike" %>
+          <button class="unlike">Like<i class="fa fa-heart fa-lg"></i></button>
+        <#% end %>
+      <#% else %>
+        <#%= form_tag likes_path, :method => :post do %>
+<!--           <#%= hidden_field_tag :place_id, :value => @photo[:place_id] %> -->
+   <!--          <button class="like"><i class="fa fa-heart-o fa-lg"></i></button>
+        <#% end %>
+      <#% end %>
+    <#% end %> -->
+    <% if current_user %>
+      <%= link_to "like",   like_place_path(@place, type: "like"), method: :put %>
+      <%= link_to "unlike", like_place_path(@place, type: "unlike"), method: :put %>
     <% end %>
-  <% end %>
-  <div class="like">
-    
   </div>
   <div class="learn">Learn</div>
   <div class="game">Game</div>

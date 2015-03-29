@@ -10,6 +10,7 @@
 #  content    :text
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  image      :text
 #
 
 require 'rails_helper'
