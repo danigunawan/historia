@@ -26,9 +26,9 @@
               <div class="game nav-option"><span>Game</span></div>
               <div class="like-unlike nav-option">                
                 <% if @current_user.place_ids.include? @place.id %>
-                  <span>Like</span><i class="fa fa-heart fa-lg unlike" id="<%= @place.id %>"></i>
+                  <span>Like</span><i class="fa fa-heart fa-lg unlike current-place" id="<%= @place.id %>"></i>
                 <% else %>
-                  <span>Like</span><i class="fa fa-heart-o fa-lg like" id="<%= @place.id %>"></i>
+                  <span>Like</span><i class="fa fa-heart-o fa-lg like current-place" id="<%= @place.id %>"></i>
                 <% end %>
               </div>
               <div class="share nav-option"><span>Share</span><i class="fa fa-share-alt fa-lg"></i></div>

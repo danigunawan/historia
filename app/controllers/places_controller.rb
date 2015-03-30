@@ -3,6 +3,7 @@ class PlacesController < ApplicationController
   end
 
   def like
+    # binding.pry
     type = params[:type]
     current_user = User.find_by(:id => session[:user_id])
     @place = Place.find(params[:id])

@@ -9,30 +9,32 @@ var initializeMap = function () {
 };
 
 var historiaApp = {
-  likePlace: function (event) {
+  sortLike: function (event) {
     event.preventDefault();
-    console.log('like');
+    var $currentEl = $(this);
+    if ( $currentEl.hasClass("like") ) {
+      historiaApp.likePlace($currentEl);
+    } else {
+      historiaApp.unlikePlace($currentEl);
+    }
+  },
 
-    var id = this.id;
-    var $that = $(this)
-    // debugger;
+  likePlace: function ($element) {
+    console.log('Like called.');
+    var id = $element.attr("id");
     $.ajax('/places/' + id + '/like', {
       type: 'POST',
       data: {
         type: 'like'
       }
     }).done(function(){
-      $that.removeClass('fa-heart-o unlike').addClass('fa-heart like');
+      $element.removeClass('fa-heart-o like').addClass('fa-heart unlike');
     });
   },
 
-  unlikePlace: function (event) {
-    event.preventDefault();
-    console.log('unlike');
-
-    var id = this.id;
-    var $that = $(this)
-    // debugger;
+  unlikePlace: function ($element) {
+    console.log('Unlike called.');
+    var id = $element.attr("id");
     $.ajax('/places/' + id + '/like', {
       type: 'DELETE',
       data: {
@@ -40,7 +42,7 @@ var historiaApp = {
         type: 'unlike'
       }
     }).done(function(){
-      $that.removeClass('fa-heart like').addClass('fa-heart-o unlike');
+      $element.removeClass('fa-heart unlike').addClass('fa-heart-o like');
       console.log('Unlike done?')
     });
   // },
@@ -54,8 +56,8 @@ var historiaApp = {
 
 $(document).ready(function() {
 
-  $('.like').on('click', historiaApp.likePlace);
-  $('.unlike').on('click', historiaApp.unlikePlace);
+  $('.current-place').on('click', historiaApp.sortLike);
+  // $('.unlike').on('click', historiaApp.unlikePlace);
   // $('.fa-heart').hover(function() {
   //   $( this ).addClass('fa-heart').removeClass('fa-heart-o');
   // }, function() {
