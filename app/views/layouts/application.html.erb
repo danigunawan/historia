@@ -13,11 +13,70 @@
   </head>
   <body>
     <header>
+    <div class="historia-logo"><h1>Historia</h1></div>
       <nav>
         <div>
+          <i class="fa fa-bars fa-2x"></i>
           <% if current_user %>
-            Signed in as <strong><%= current_user.name %></strong>
-            <%= link_to "Sign out", signout_path, id: "sign_out" %>
+            <div class="logged-overlay">
+              <div class="welcome nav-option">
+                <span>Hello <%= current_user.name %></span>
+              </div>
+              <div class="discover nav-option"><%= link_to 'Discover', page_path(@place) %></div>
+              <div class="game nav-option"><span>Game</span></div>
+              <div class="like-unlike nav-option">                
+                <% if @current_user.place_ids.include? @place.id %>
+                  <span>Like</span><i class="fa fa-heart fa-lg unlike" id="<%= @place.id %>"></i>
+                <% else %>
+                  <span>Like</span><i class="fa fa-heart-o fa-lg like" id="<%= @place.id %>"></i>
+                <% end %>
+              </div>
+              <div class="share nav-option"><span>Share</span><i class="fa fa-share-alt fa-lg"></i></div>
+              <div class="signout nav-option">
+                <%= link_to signout_path, title: "Sign out", id: "sign_out" do %>
+                  <span class="btn-signout-text">Sign out</span><i class="fa fa-sign-out fa-lg"></i>
+                <% end %>
+              </div>
+              <i class="fa fa-close fa-2x"></i>
+            </div>
+          <% else %>
+            <div class="login-overlay">
+              <!-- Sign in email/password -->
+              <div class="signin-container">
+                <div class="general-overlay signin-form">
+                  <h2>Got an account? Sign in</h2>
+                  <%= render :partial => 'sessions/form' %>
+                </div>
+              </div>
+
+              <div class="facebook-container">
+                <div class="overlay">
+                  <%= link_to "/auth/facebook", title: "Sign up or in with Facebook", id: "sign_in" do %>
+                    <i class="fa fa-facebook fa-lg"></i>
+                    <p class="btn-fb-text">Sign in with <strong>Facebook</strong></p>
+                  <% end %>
+                </div>
+              </div>
+
+              <!-- Sign up email/password -->
+              <div class="signup-container">
+                <div class="general-overlay signup-form">
+                  <h2>New to Historia? Sign up</h2>
+                  <%= render :partial => 'users/form' %>
+                </div>
+              </div>
+
+              <div class="google-container">
+                <div class="overlay">
+                  <%= link_to "/auth/google_oauth2", title: "Sign up or in with Google", id: "sign_in" do %>
+                    <i class="fa fa-google fa-lg"></i>
+                    <p class="btn-google-text">Sign in with <strong>Google</strong></p>
+                  <% end %>
+                </div>
+
+              </div>
+              <i class="fa fa-close fa-2x"></i>
+            </div>                           
           <% end %>
         </div>
       </nav>
@@ -25,5 +84,6 @@
     <div class="container">
       <%= yield %>
     </div>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAvR3BhgABRhezAKkvzbyI3FEjmvJcCfb4"></script>
   </body>
 </html>

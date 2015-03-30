@@ -1,3 +1,17 @@
+@font-face {
+  font-family: 'Slim Joe';
+  src: url('Slim-Joe.otf', font) format("truetype");
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'BIG JOHN';
+  src: url('BIG-JOHN.otf', font) format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
 * {
   margin: 0;
   -webkit-margin-before: 0;
@@ -6,6 +20,7 @@
   -webkit-margin-end: 0;
   box-sizing: border-box;
   outline: none;
+  font-family: 'Slim Joe';
 }
 
 html, body {
@@ -19,6 +34,7 @@ a {
   text-decoration: none;
 }
 h2 {
+  font-family: 'Slim Joe';
   font-size: 1.5em;
   margin-bottom: 0.8em;
   text-align: center;
@@ -44,11 +60,25 @@ h2 {
   bottom: 0;
   background-color: #000;
   display: none;
+  font-family: 'Slim Joe';
   z-index: 1;
 }
+.logged-overlay {
+  width: 20%;
+  height: auto; 
+  // min-height: 100vh;
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: #212121;
+  display: none;
+  z-index: 1;
+}
+
 .show {
   display: inline-block;
 }
+
 .hide {
   visibility: hidden;
 }
@@ -209,7 +239,7 @@ input[type="email"] {
   position: absolute;
   top: 0;
   right: 0;
-  padding: 0.5em;
+  padding: 0.5em 1em;
   z-index: 100;
   color: #212121;
   cursor: pointer;
@@ -237,4 +267,48 @@ input[type="email"] {
 .fa-heart,
 .fa-heart-o {
   color: #FF4242;
+}
+
+.logged-overlay .fa-close {
+  color: #fff;
+}
+
+.nav-option {
+  line-height: 1em;
+  padding: 1.5em 0.5em 1.5em 3em;
+  border-bottom: 2px solid #333;
+  font-family: 'BIG-JOHN';
+  color: #fff;
+  text-transform: uppercase;
+  margin: 0 auto;
+}
+.welcome {
+  margin-top: 3.5em;
+}
+
+.logged-overlay .fa {
+  padding-left: 0.5em;
+}
+.historia-logo {
+  position: absolute;
+  padding: 0em 1.5em;
+  z-index: 1;
+}
+h1 {
+  margin-top: 0.5em;
+}
+.main-image {
+  display: inline-block;
+ width: 800px;
+ max-width: 70%;
+ height: 500px;
+ overflow: hidden;
+   margin: 0 auto;
+}
+.map {
+  display: inline-block;
+  width: 36%;
+  height: 72vh;
+  margin: 0 auto;
+  // border: 2px solid #000;
 }
