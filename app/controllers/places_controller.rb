@@ -4,9 +4,7 @@ class PlacesController < ApplicationController
 
   def like
     type = params[:type]
-
     current_user = User.find_by(:id => session[:user_id])
-
     @place = Place.find(params[:id])
 
     if type == "like"

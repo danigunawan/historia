@@ -1,5 +1,6 @@
 class PagesController < ApplicationController
   def index
+    @place = Place.all
     @place = Place.random
     respond_to do |format|
       format.html
