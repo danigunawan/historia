@@ -9,21 +9,21 @@
   <#%= image_tag @place.image %>
 </div>
  -->
-<div class="nav-bar">
+<!-- <div class="nav-bar">
   <div class="like-container">
 <!--     <#% if current_user %> -->
-        <% if @current_user.place_ids.include? @place.id %>
-          <%= link_to like_place_path(@place, type: "unlike"), class: 'unlike', method: :put do %>
+<!--         <#% if @current_user.place_ids.include? @place.id %>
+          <#%= link_to like_place_path(@place, type: "unlike"), class: 'unlike', method: :put do %>
             <i class="fa fa-heart fa-lg"></i>
-          <% end %>
-        <% else %>
-          <%= link_to like_place_path(@place, type: "like"), class: 'unlike', method: :put do %>
+          <#% end %>
+        <#% else %>
+          <#%= link_to like_place_path(@place, type: "like"), class: 'unlike', method: :put do %>
             <i class="fa fa-heart-o fa-lg"></i>
-          <% end %>
-        <% end %>
+          <#% end %>
+        <#% end %> -->
 <!--     <#% end %> -->
-  </div>
-  <div class="discover"><%= link_to 'Discover', page_path(@place) %></div>
+  </div> -->
+<!--   <div class="discover"><#%= link_to 'Discover', page_path(@place) %></div> -->
   <div class="game">Game</div>
   <div class="share"><i class="fa fa-share-alt fa-lg"></i></div>
 </div>
