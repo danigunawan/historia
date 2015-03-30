@@ -1,10 +1,3 @@
-window.HistoriaApp = {
-  Models: {},
-  Collections: {},
-  Views: {},
-  Routers: {}
-};
-
 $(document).ready(function() {
   // return HistoriaApp.initialize();
 
