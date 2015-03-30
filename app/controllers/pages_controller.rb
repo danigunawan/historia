@@ -1,6 +1,5 @@
 class PagesController < ApplicationController
   def index
-    @place = Place.all
     @place = Place.random
     respond_to do |format|
       format.html
@@ -11,6 +10,7 @@ class PagesController < ApplicationController
 
   def show
     @place = Place.find params[:id]
+    # binding.pry
     respond_to do |format|
       format.html
       format.json

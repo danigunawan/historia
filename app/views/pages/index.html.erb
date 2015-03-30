@@ -8,13 +8,13 @@
   <div class="like-container">
     <% if current_user %>
         <% if @current_user.place_ids.include? @place.id %>
-          <%= link_to like_place_path(@place, type: "unlike"), class: 'unlike', method: :put do %>
-            <i class="fa fa-heart fa-lg"></i>
-          <% end %>
+<!--           <3%= link_to like_place_path(@place, type: "unlike"), class: 'unlike', data: @place.id, remote: :true do %> -->
+            <i class="fa fa-heart fa-lg unlike" id="<%= @place.id %>"></i>
+<!--           <#% end %> -->
         <% else %>
-          <%= link_to like_place_path(@place, type: "like"), class: 'unlike', method: :put do %>
-            <i class="fa fa-heart-o fa-lg"></i>
-          <% end %>
+<!--           <#%= link_to like_place_path(@place, type: "like"), class: 'like', data: @place.id, remote: :true do %> -->
+            <i class="fa fa-heart-o fa-lg like" id="<%= @place.id %>"></i>
+<!--           <#% end %> -->
         <% end %>
     <% end %>
    </div> 
