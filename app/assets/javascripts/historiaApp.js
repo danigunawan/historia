@@ -12,8 +12,7 @@ var historiaApp = {
   likePlace: function (event) {
     event.preventDefault();
     console.log('like');
-    // var $a = (this).attributes;
-    // var id = $a.data.value;
+
     var id = this.id;
     var $that = $(this)
     // debugger;
@@ -24,15 +23,16 @@ var historiaApp = {
       }
     }).done(function(){
       $that.removeClass('fa-heart-o unlike').addClass('fa-heart like');
-      console.log('Like done?')
     });
   },
+  
   unlikePlace: function (event) {
     event.preventDefault();
-        // debugger;
     console.log('unlike');
+
     var id = this.id;
     var $that = $(this)
+    // debugger;
     $.ajax('/places/' + id + '/like', {
       type: 'DELETE',
       data: {
@@ -40,8 +40,7 @@ var historiaApp = {
         type: 'unlike'
       }
     }).done(function(){
-      $that.removeClass('like').addClass('unlike');
-      $that.removeClass('fa-heart').addClass('fa-heart-o');
+      $that.removeClass('fa-heart like').addClass('fa-heart-o unlike');
       console.log('Unlike done?')
     });
   }
@@ -51,14 +50,6 @@ $(document).ready(function() {
 
   $('.like').on('click', historiaApp.likePlace);
   $('.unlike').on('click', historiaApp.unlikePlace);
-
-  // $('.unlike').on('click', function(event) {
-  //   event.preventDefault();
-  //   console.log('unlike click');
-  //   var $a = (this).attributes;
-  //   var id = $a.data.value;
-  //   historiaApp.unlikePlace(id);
-  // });
 
   // Display signin/signup popup 
   $('.fa-bars').on('click', function() {
