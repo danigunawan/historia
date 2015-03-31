@@ -1,3 +1,4 @@
+// FONTS
 @font-face {
   font-family: 'Slim Joe';
   src: url('Slim-Joe.otf', font) format("truetype");
@@ -12,6 +13,7 @@
   font-style: normal;
 }
 
+// GLOBAL
 * {
   margin: 0;
   -webkit-margin-before: 0;
@@ -19,8 +21,8 @@
   -webkit-margin-start: 0;
   -webkit-margin-end: 0;
   box-sizing: border-box;
-  outline: none;
   font-family: 'Slim Joe';
+  outline: none;
 }
 
 html, body {
@@ -28,65 +30,62 @@ html, body {
   height: 100vh; 
   min-height: 100vh;
   font-size: 1em;
+  line-height: 1.5em;
 }
+
 a {
-  color: #fff;
+  color: #A7C520;
   text-decoration: none;
 }
+
+a:hover {
+  text-decoration: underline;
+}
+
 h2 {
   font-family: 'Slim Joe';
   font-size: 1.5em;
   margin-bottom: 0.8em;
   text-align: center;
 }
+
+p {
+  padding: 0.5em;
+}
+
+// HOMEPAGE
 .hero {
+  position: fixed;
   min-height: 100%;
   min-width: 1024px;
   width: 100%;
   height: auto;
-  position: fixed;
   top: 0;
   left: 0;
 }
 
+// SIGN IN/SIGN UP OVERLAY & OPTIONS
 .login-overlay {
+  position: absolute;
   width: 100%;
   height: 100vh; 
   min-height: 100vh;
-  position: absolute;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
   background-color: #000;
-  display: none;
   font-family: 'Slim Joe';
-  z-index: 1;
-}
-.logged-overlay {
-  width: 20%;
-  height: auto; 
-  // min-height: 100vh;
-  position: absolute;
-  top: 0;
-  right: 0;
-  background-color: #212121;
+  color: #FFF;
   display: none;
   z-index: 1;
-}
-
-.show {
-  display: inline-block;
-}
-
-.hide {
-  visibility: hidden;
 }
 
 .google-container,
 .facebook-container,
 .signup-container,
 .signin-container {
+  position: relative;
   float: left;
   min-width: 50%;
   min-height: 50vh;
@@ -95,33 +94,7 @@ h2 {
   transform: scale(1);
 }
 
-.google-container {
-  position: relative;
-  background-color: #dd4b39;
-}
-.google-container:hover {
-  background-color: #E15F4F;
-}
-
-.facebook-container {
-  position: relative;
-  background-color: #3A5795;
-}
-
-.facebook-container:hover {
-  background-color: #3C5A77;
-}
-
-.signin-container {
-  position: relative;
-  background-color: #212121;
-}
-
-.signup-container {
-  position: relative;
-  background-color: #fff;
-}
-.overlay {
+.social-signin {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -130,7 +103,8 @@ h2 {
   height: 50%;
   min-height: 50%;
 }
-.general-overlay {
+
+.general-signin {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -138,11 +112,34 @@ h2 {
   width: 100%;
   height: 75%;
   min-height: 50%;
-  // border: 1px solid pink;
 }
 
-.facebook-container .overlay,
-.google-container .overlay {
+.google-container {
+  background-color: #DD4B39;
+}
+
+.google-container:hover {
+  background-color: #E15F4F;
+}
+
+.facebook-container {
+  background-color: #3A5795;
+}
+
+.facebook-container:hover {
+  background-color: #3C5A77;
+}
+
+.signin-container {
+  background-color: #212121;
+}
+
+.signup-container {
+  background-color: #FFF;
+}
+
+.facebook-container .social-signin,
+.google-container .social-signin {
   text-align: center;
   padding: 25% 0;
 }
@@ -155,26 +152,62 @@ h2 {
   text-align: center;
 }
 
-.btn-signin-form {
-  background-color: #212121;
-  border: 1px solid #fff;
-}
-.btn-signup-form {
-  background-color: #fff;
-  border: 1px solid #212121;
-}
-
 .btn-signup-form,
 .btn-signin-form {
   margin-top: 0.5em;
   padding: 0.8em;
   width: 16.5em;
   border-radius: 0.2em;
-  // position: absolute;
-  // right: 0;
   text-transform: uppercase;
   font-weight: 700;
 }
+
+.btn-signin-form {
+  background-color: #212121;
+  border: 1px solid #fff;
+}
+
+.btn-signup-form {
+  background-color: #fff;
+  border: 1px solid #212121;
+}
+
+// SIGNED IN NAVIGATION
+.main-nav {
+  position: absolute;
+  width: 20%;
+  height: auto; 
+  top: 0;
+  right: 0;
+  color: #FFF;
+  background-color: #212121;
+  display: none;
+  z-index: 1;
+}
+
+.main-nav .fa {
+  padding-left: 0.5em;
+}
+
+.main-nav a,
+.login-overlay a {
+  color: #FFF;
+}
+
+.main-nav a:hover,
+.login-overlay a:hover {
+  text-decoration: none;
+}
+
+// DISPLAY OPTIONS
+.show {
+  display: inline-block;
+}
+
+.hide {
+  visibility: hidden;
+}
+
 .form-group {
   display: table;
   margin: 0 auto;
@@ -269,7 +302,7 @@ input[type="email"] {
   color: #FF4242;
 }
 
-.logged-overlay .fa-close {
+.main-nav .fa-close {
   color: #fff;
 }
 
@@ -286,9 +319,6 @@ input[type="email"] {
   margin-top: 3.5em;
 }
 
-.logged-overlay .fa {
-  padding-left: 0.5em;
-}
 .historia-logo {
   position: absolute;
   padding: 0em 1.5em;
@@ -321,5 +351,49 @@ h1 {
   font-family: arial;
   text-transform: normal;
   text-align: left;
-  color: #FF4242;
+}
+.results-index {
+  width: 50%;
+  min-width: 40%;
+  padding: 4.5em 3em;
+}
+.results-index h2 {
+  text-align: left;
+}
+.results-index h3 {
+  margin: 1.5em 0 0.5em 0;
+  border-bottom: 1px solid #212121;
+}
+.user-list li,
+.controls li {
+  list-style-type: none;
+}
+.controls li {
+  display: inline-block;
+}
+ul.share-buttons{
+  list-style: none;
+  padding: 0;
+}
+
+ul.share-buttons li{
+  display: inline;
+}
+.collapse {
+  display: none;
+}
+.fa-share-alt,
+.fa-heart,
+.fa-heart-o {
+  cursor: pointer;
+}
+.fa-share-alt:hover {
+  color: #A7C520;
+}
+.wiki-introduction span,
+.wiki-introduction p span,
+.wiki-history span,
+.wiki-history p span,
+sup {
+  display: none;
 }

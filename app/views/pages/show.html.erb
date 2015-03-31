@@ -3,9 +3,13 @@
 </div> -->
 <div class="map" data-latitude="<%= @place.latitude %>" data-longitude="<%= @place.longitude %>"></div>
 <div id="<%= @place.name %>"class="content">
-  <h2><%= @place.name %></h2>
-  <p class="fact"><%= @place.name %></p>
-  <div class="wiki-container"></div>
+  <p class="fact"><%= @place.fact %></p>
+  <div class="wiki-container">
+    <h2><%= @place.name %></h2>
+    <div class="wiki-introduction"></div>
+    <h2>History</h2>
+    <div class="wiki-history"></div>
+  </div>
 </div>
 </div>
 <div class="flights"></div>

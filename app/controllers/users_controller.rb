@@ -1,5 +1,10 @@
 class UsersController < ApplicationController
   def index
+    if params[:search]
+      @users = User.search(params[:search]).order(:name)
+    else
+      @users = User.order(:name)
+    end
   end
 
   def create

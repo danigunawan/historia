@@ -36,7 +36,8 @@ class User < ActiveRecord::Base
                        :confirmation => true,
                        :length => {:within => 6..64},
                        :on => :create
-                       
+  
+  # mount_uploader :image, ImageUploader
   # Create user account when signing in using Facebook for the first time
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
@@ -51,5 +52,9 @@ class User < ActiveRecord::Base
       # user.oauth_expires_at = Time.at(auth.credentials.expires_at) unless auth.credentials.expires_at.nil?
       user.save!
     end
+  end
+
+  def self.search(query)
+    where("name ilike ? OR email ilike?  ", "%#{query}%", "%#{query}%")
   end
 end

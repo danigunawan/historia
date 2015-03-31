@@ -1,6 +1,3 @@
-
-// GET LAT AND LONG BY ADDING THEM AS DATA ATTR TO THE PAGE SOMEWHERE..
-
 var initializeMap = function () {
   var latitude = $('.map').attr('data-latitude');
   var longitude = $('.map').attr('data-longitude');
@@ -25,7 +22,6 @@ var historiaApp = {
   },
 
   likePlace: function ($element) {
-    console.log('Like called.');
     var id = $element.attr("id");
     $.ajax('/places/' + id + '/like', {
       type: 'POST',
@@ -38,7 +34,6 @@ var historiaApp = {
   },
 
   unlikePlace: function ($element) {
-    console.log('Unlike called.');
     var id = $element.attr("id");
     $.ajax('/places/' + id + '/like', {
       type: 'DELETE',
@@ -48,17 +43,14 @@ var historiaApp = {
       }
     }).done(function(){
       $element.removeClass('fa-heart unlike').addClass('fa-heart-o like');
-      console.log('Unlike done?')
     });
   },
 
-  fetchWikipediaContent: function(place) {
+  fetchIntroWikipediaContent: function(place) {
     var $fullPlaceName = $('.content').attr('id');
-    console.log(placeName);
     var placeName = $fullPlaceName.split(',')[0];
 
-    console.log('Fetching wikipedia content');
-    // debugger;
+    console.log('Fetching intro wikipedia content');
     $.ajax({
       url: 'http://en.wikipedia.org/w/api.php', 
       data: {
@@ -69,49 +61,71 @@ var historiaApp = {
         section: 0
       },
       dataType: 'jsonp',
-    }).done(historiaApp.processWikipediaContent);
+    }).done(historiaApp.processIntroWikipediaContent);
+  },
+  fetchHistWikipediaContent: function(place) {
+    var $fullPlaceName = $('.content').attr('id');
+    var placeName = $fullPlaceName.split(',')[0];
+
+    console.log('Fetching history wikipedia content');
+    $.ajax({
+      url: 'http://en.wikipedia.org/w/api.php', 
+      data: {
+        action: 'parse',
+        page: placeName,
+        format: 'json',
+        prop: 'text',
+        section: 1
+      },
+      dataType: 'jsonp',
+    }).done(historiaApp.processHistWikipediaContent);
   },
 
-  processWikipediaContent: function (content) {
-    console.log('Processing wikipedia content')
+  processIntroWikipediaContent: function (content) {
     var fetchedRawContent = content.parse.text['*'];
     var $createElement = $('<div>').html(fetchedRawContent);
     var $introContent = $createElement.find('p');
     // (/\[\d+\]/, '');
-    $('.wiki-container').append($introContent);
+    $('.wiki-introduction').append($introContent);
+  },
+    processHistWikipediaContent: function (content) {
+    var fetchedRawContent = content.parse.text['*'];
+    var $createElement = $('<div>').html(fetchedRawContent);
+    var $histContent = $createElement.find('p');
+    // (/\[\d+\]/, '');
+    $('.wiki-history').append($histContent);
   }
 };
 
 $(document).ready(function() {
 
+  // Like/Unlike a place
   $('.current-place').on('click', historiaApp.sortLike);
-
-  // $('.fa-heart').hover(function() {
-  //   $( this ).addClass('fa-heart').removeClass('fa-heart-o');
-  // }, function() {
-  //   $( this ).removeClass('fa-heart').addClass('fa-heart-o');
-  // }
-  // );
 
   // Display signin/signup popup 
   $('.fa-bars').on('click', function() {
     $('.fa-bars').addClass('hide');
     $('.login-overlay').addClass('show');
-    $('.logged-overlay').addClass('show');
+    $('.main-nav').addClass('show');
   });
 
   // Hide signin/signup popup 
   $('.fa-close').on('click', function() {
     $('.login-overlay').removeClass('show');
-    $('.logged-overlay').removeClass('show');
+    $('.main-nav').removeClass('show');
     $('.fa-bars').removeClass('hide');
+  });
+
+  $('.fa-share-alt').on('click', function() {
+    console.log('toggling????')
+    $('.share-options').toggleClass('collapse');
   });
 
   initializeMap();
 
   // Wikipedia Event
-  historiaApp.fetchWikipediaContent();
-
+  historiaApp.fetchIntroWikipediaContent();
+  historiaApp.fetchHistWikipediaContent();
 
 });
 

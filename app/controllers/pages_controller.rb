@@ -5,12 +5,10 @@ class PagesController < ApplicationController
       format.html
       format.json
     end
-    # binding.pry
   end  
 
   def show
     @place = Place.find params[:id]
-    # binding.pry
     respond_to do |format|
       format.html
       format.json
