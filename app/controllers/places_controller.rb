@@ -1,5 +1,10 @@
 class PlacesController < ApplicationController
   def index
+    if params[:search]
+      @places = Place.search(params[:search]).order(:name)
+    else
+      @places = Place.order(:name)
+    end
   end
 
   def like
@@ -24,12 +29,16 @@ class PlacesController < ApplicationController
   end
 
   def create
+    @place = Place.create place_params
+    redirect_to root_path
   end
 
   def new
+    @place = Place.new
   end
 
   def edit
+    @place = Place.find params[:id]
   end
 
   def show
@@ -37,8 +46,19 @@ class PlacesController < ApplicationController
   end
 
   def update
+    place = @place
+    place.update place_params
+    redirect_to root_path
   end
 
   def destroy
+    place = Place.find params[:id]
+    place.destroy
+    redirect_to places_path
+  end
+
+  private 
+  def place_params
+    params.require(:place).permit(:name, :latitude, :longitude, :image, :fact, :content, :remote_image_url)
   end
 end
