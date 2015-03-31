@@ -1,12 +1,12 @@
-var initializeMap = function () {
-  var $container = $('.map')[0];
+// var initializeMap = function () {
+//   var $container = $('.map')[0];
 
-  var mapOptions = {
-    zoom: 8,
-    center: new google.maps.LatLng(-34.397, 150.644)
-  }
-  var map = new google.maps.Map($container, mapOptions);
-};
+//   var mapOptions = {
+//     zoom: 8,
+//     center: new google.maps.LatLng(-34.397, 150.644)
+//   }
+//   var map = new google.maps.Map($container, mapOptions);
+// };
 
 var historiaApp = {
   sortLike: function (event) {
@@ -45,19 +45,44 @@ var historiaApp = {
       $element.removeClass('fa-heart unlike').addClass('fa-heart-o like');
       console.log('Unlike done?')
     });
-  // },
-  // retrieveWikiContent: function() {
-  //   $.getJSON('http://en.wikipedia.org/w/api.php?action=parse&page=google&prop=text&format=json&callback=?', 
-  //     function(json) {
-  //       $('.content').html(json.parse.text); 
-  //   });
+  },
+
+  fetchWikipediaContent: function(place) {
+    var $fullPlaceName = $('.content').attr('id');
+    console.log(placeName);
+    var placeName = $fullPlaceName.split(',')[0]
+    // debugger;
+    console.log('Fetching wikipedia content');
+    // var placeData = place;
+    // console.log(placeData);
+    // debugger;
+    $.ajax({
+      url: 'http://en.wikipedia.org/w/api.php', 
+      data: {
+        action: 'parse',
+        page: placeName,
+        format: 'json',
+        prop: 'text',
+        section: 0
+      },
+      dataType: 'jsonp',
+    }).done(historiaApp.processWikipediaContent);
+  },
+
+  processWikipediaContent: function (content) {
+    console.log('Processing wikipedia content')
+    var fetchedRawContent = content.parse.text['*'];
+    var $createElement = $('<div>').html(fetchedRawContent);
+    var $introContent = $createElement.find('p');
+    // (/\[\d+\]/, '');
+    $('.wiki-container').append($introContent);
   }
 };
 
 $(document).ready(function() {
 
   $('.current-place').on('click', historiaApp.sortLike);
-  // $('.unlike').on('click', historiaApp.unlikePlace);
+
   // $('.fa-heart').hover(function() {
   //   $( this ).addClass('fa-heart').removeClass('fa-heart-o');
   // }, function() {
@@ -79,8 +104,11 @@ $(document).ready(function() {
     $('.fa-bars').removeClass('hide');
   });
 
-  initializeMap();
-  // historiaApp.retrieveWikiContent();
+  // initializeMap();
+
+  // Wikipedia Event
+  historiaApp.fetchWikipediaContent();
+
 
 });
 

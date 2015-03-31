@@ -1,7 +1,11 @@
-<div class="main-image">
-  <%= image_tag @place.image %>
-</div>
-
+<!-- <div class="main-image">
+  <#%= image_tag @place.image %>
+</div> -->
 <div class="map"></div>
-<div class="content"></div>
+<div id="<%= @place.name %>"class="content">
+  <h2><%= @place.name %></h2>
+  <p class="fact"><%= @place.name %></p>
+  <div class="wiki-container"></div>
+</div>
+</div>
 <div class="flights"></div>
