@@ -1,12 +1,17 @@
-// var initializeMap = function () {
-//   var $container = $('.map')[0];
 
-//   var mapOptions = {
-//     zoom: 8,
-//     center: new google.maps.LatLng(-34.397, 150.644)
-//   }
-//   var map = new google.maps.Map($container, mapOptions);
-// };
+// GET LAT AND LONG BY ADDING THEM AS DATA ATTR TO THE PAGE SOMEWHERE..
+
+var initializeMap = function () {
+  var latitude = $('.map').attr('data-latitude');
+  var longitude = $('.map').attr('data-longitude');
+  var $container = $('.map')[0];
+
+  var mapOptions = {
+    zoom: 8,
+    center: new google.maps.LatLng(latitude, longitude)
+  }
+  var map = new google.maps.Map($container, mapOptions);
+};
 
 var historiaApp = {
   sortLike: function (event) {
@@ -50,11 +55,9 @@ var historiaApp = {
   fetchWikipediaContent: function(place) {
     var $fullPlaceName = $('.content').attr('id');
     console.log(placeName);
-    var placeName = $fullPlaceName.split(',')[0]
-    // debugger;
+    var placeName = $fullPlaceName.split(',')[0];
+
     console.log('Fetching wikipedia content');
-    // var placeData = place;
-    // console.log(placeData);
     // debugger;
     $.ajax({
       url: 'http://en.wikipedia.org/w/api.php', 
@@ -104,7 +107,7 @@ $(document).ready(function() {
     $('.fa-bars').removeClass('hide');
   });
 
-  // initializeMap();
+  initializeMap();
 
   // Wikipedia Event
   historiaApp.fetchWikipediaContent();

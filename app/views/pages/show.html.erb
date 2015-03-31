@@ -1,7 +1,7 @@
 <!-- <div class="main-image">
   <#%= image_tag @place.image %>
 </div> -->
-<div class="map"></div>
+<div class="map" data-latitude="<%= @place.latitude %>" data-longitude="<%= @place.longitude %>"></div>
 <div id="<%= @place.name %>"class="content">
   <h2><%= @place.name %></h2>
   <p class="fact"><%= @place.name %></p>
