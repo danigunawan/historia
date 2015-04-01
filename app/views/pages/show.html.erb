@@ -1,7 +1,10 @@
-<!-- <div class="main-image">
-  <#%= image_tag @place.image %>
-</div> -->
+<div class="main-image">
+  <%= image_tag @place.image %>
+</div>
 <div class="map" data-latitude="<%= @place.latitude %>" data-longitude="<%= @place.longitude %>"></div>
+
+<p class="statLat"></p>
+<p class="statLon"></p>
 <div id="<%= @place.name %>"class="content">
   <p class="fact"><%= @place.fact %></p>
   <div class="wiki-container">

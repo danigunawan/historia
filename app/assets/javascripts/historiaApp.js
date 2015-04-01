@@ -1,3 +1,31 @@
+window.onload = function() {
+  var startPos;
+
+  var geoSuccess = function(position) {
+    startPos = position;
+    var latitude = startPos.coords.latitude;
+    var longitude = startPos.coords.longitude;
+    $('.statLat').text(latitude);
+    $('.statLon').text(longitude);
+  };
+  navigator.geolocation.getCurrentPosition(geoSuccess);
+};
+
+// var FlightRequest = {
+//   "request": {
+//     "passengers": {
+//       "adultCount": 1
+//     },
+//     "slice": [
+//     {
+//       "origin": "LAX",
+//       "destination": "SYD",
+//       "date": "2015-14-07"
+//     }
+//     ]
+//   }
+// };
+
 var initializeMap = function () {
   var latitude = $('.map').attr('data-latitude');
   var longitude = $('.map').attr('data-longitude');
@@ -50,7 +78,6 @@ var historiaApp = {
     var $fullPlaceName = $('.content').attr('id');
     var placeName = $fullPlaceName.split(',')[0];
 
-    console.log('Fetching intro wikipedia content');
     $.ajax({
       url: 'http://en.wikipedia.org/w/api.php', 
       data: {
@@ -63,11 +90,11 @@ var historiaApp = {
       dataType: 'jsonp',
     }).done(historiaApp.processIntroWikipediaContent);
   },
+
   fetchHistWikipediaContent: function(place) {
     var $fullPlaceName = $('.content').attr('id');
     var placeName = $fullPlaceName.split(',')[0];
 
-    console.log('Fetching history wikipedia content');
     $.ajax({
       url: 'http://en.wikipedia.org/w/api.php', 
       data: {
@@ -83,19 +110,34 @@ var historiaApp = {
 
   processIntroWikipediaContent: function (content) {
     var fetchedRawContent = content.parse.text['*'];
-    var $createElement = $('<div>').html(fetchedRawContent);
+    var $createElement = $('<div/>').html(fetchedRawContent);
     var $introContent = $createElement.find('p');
     // (/\[\d+\]/, '');
     $('.wiki-introduction').append($introContent);
   },
     processHistWikipediaContent: function (content) {
     var fetchedRawContent = content.parse.text['*'];
-    var $createElement = $('<div>').html(fetchedRawContent);
+    var $createElement = $('<div/>').html(fetchedRawContent);
     var $histContent = $createElement.find('p');
     // (/\[\d+\]/, '');
     $('.wiki-history').append($histContent);
+  // },
+
+  // searchFlights: function () {
+  //   $.ajax({
+  //     url: 'https://www.googleapis.com/qpxExpress/v1/trips/search?key=AIzaSyAvR3BhgABRhezAKkvzbyI3FEjmvJcCfb4',
+  //     type: 'POST',
+  //     contentType: 'application/json',
+  //     dataType: 'json',
+  //     data: FlightRequest
+  //   }).done(historiaApp.renderFlights);
+  // },
+
+  // renderFlights: function(flights) {
+  //   console.log(flights);
   }
 };
+
 
 $(document).ready(function() {
 
@@ -116,12 +158,13 @@ $(document).ready(function() {
     $('.fa-bars').removeClass('hide');
   });
 
+  // Show/Hide social media share buttons
   $('.fa-share-alt').on('click', function() {
-    console.log('toggling????')
     $('.share-options').toggleClass('collapse');
   });
 
   initializeMap();
+  // historiaApp.searchFlights();
 
   // Wikipedia Event
   historiaApp.fetchIntroWikipediaContent();

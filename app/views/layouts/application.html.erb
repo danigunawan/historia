@@ -24,10 +24,18 @@
                 <span>Hello <%= current_user.name %></span>
               </div>
               <% if @place == nil %>
-                <div class="discover nav-option"><%= link_to 'Discover', root_path %></div>
+                <div class="discover nav-option">
+                  <%= link_to root_path, title: 'Discover a new place', id: 'discover' do %>
+                    <span class="btn-signout-text">Discover</span><i class="fa fa-globe fa-lg"></i>
+                  <% end %>
+                </div>
               <% else %>
-                <div class="discover nav-option"><%= link_to 'Discover', page_path(@place) %></div>
-                <div class="game nav-option"><span>Game</span></div>
+                <div class="discover nav-option">
+                  <%= link_to page_path(@place), title: 'Learn more', id: 'discover' do %>
+                    <span class="btn-signout-text">Discover</span><i class="fa fa-globe fa-lg"></i>
+                  <% end %>
+                </div>
+                <div class="game nav-option"><span>Game</span><i class="fa fa-gamepad fa-lg"></i></div>
                 <div class="like-unlike nav-option">                
                   <% if @current_user.place_ids.include? @place.id %>
                     <span>Like</span><i class="fa fa-heart fa-lg unlike current-place" id="<%= @place.id %>"></i>
@@ -42,7 +50,11 @@
                   <%== social_share %>
                 </div>
               <% end %>
-              
+              <div class="edit-profile nav-option">
+                <%= link_to signout_path, title: "Sign out", id: "sign_out" do %>
+                  <span class="btn-signout-text">Edit profile</span><i class="fa fa-cog fa-lg"></i>
+                <% end %>
+              </div>
               <div class="signout nav-option">
                 <%= link_to signout_path, title: "Sign out", id: "sign_out" do %>
                   <span class="btn-signout-text">Sign out</span><i class="fa fa-sign-out fa-lg"></i>

@@ -382,12 +382,9 @@ ul.share-buttons li{
 .collapse {
   display: none;
 }
-.fa-share-alt,
-.fa-heart,
-.fa-heart-o {
+
+.fa:hover {
   cursor: pointer;
-}
-.fa-share-alt:hover {
   color: #A7C520;
 }
 .wiki-introduction span,
@@ -396,4 +393,7 @@ ul.share-buttons li{
 .wiki-history p span,
 sup {
   display: none;
+}
+.error {
+  text-align: center;
 }

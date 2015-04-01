@@ -22,7 +22,7 @@ class Place < ActiveRecord::Base
     Place.order("RANDOM()").first
   end
 
-  mount_uploader :image, ImageUploader
+  # mount_uploader :image, ImageUploader
 
   def self.search(query)
     where("name ilike ? ", "%#{query}%")

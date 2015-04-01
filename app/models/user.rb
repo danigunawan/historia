@@ -48,12 +48,11 @@ class User < ActiveRecord::Base
       user.password_confirmation = auth.uid
       user.oauth_token = auth.credentials.token
       user.oauth_expires_at = Time.at(auth.credentials.expires_at)
-      # user.oauth_expires_at = Time.at(auth.credentials.expires_at) unless auth.credentials.expires_at.nil?
       user.save!
     end
   end
-  mount_uploader :image, ImageUploader
-  
+  # mount_uploader :image, ImageUploader
+
   def self.search(query)
     where("name ilike ? OR email ilike?  ", "%#{query}%", "%#{query}%")
   end
