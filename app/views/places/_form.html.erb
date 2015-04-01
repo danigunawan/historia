@@ -38,10 +38,10 @@
       <%= f.label :image do %>
         <i class="fa fa-camera-retro fa-fw"></i>
       <% end %>
-      <%= f.text_field :image, :required => true, :placeholder => 'Avatar' %>
+      <%= f.file_field :image, :required => true, :placeholder => 'Image' %>
     </div>
     <div class="form-group">
-      <%= f.submit 'Create place', :class => 'btn-signup-form' %>
+      <%= f.submit 'Create place', :class => 'btn-update-form' %>
     </div>
     
   </div>
