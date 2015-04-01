@@ -19,10 +19,16 @@
     <%= f.text_field :longitude, :required => true, :placeholder => 'Longitude' %>
   </div>
   <div class="form-group">
+    <%= f.label :fact do %>
+      <i class="fa fa-align-left fa-fw"></i>
+    <% end %>
+    <%= f.text_field :fact, :required => true, :placeholder => 'Fact' %>
+  </div>
+  <div class="form-group">
     <%= f.label :content do %>
       <i class="fa fa-align-left fa-fw"></i>
     <% end %>
-    <%= f.text_field :content, :required => true, :placeholder => 'Content' %>
+    <%= f.text_area :content, :required => true, :placeholder => 'Content' %>
   </div>
   <div class="form-group">
     <%= f.label :image do %>

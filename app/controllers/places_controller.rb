@@ -46,6 +46,7 @@ class PlacesController < ApplicationController
   end
 
   def update
+    binding.pry
     place = @place
     place.update place_params
     redirect_to place
