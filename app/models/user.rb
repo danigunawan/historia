@@ -37,7 +37,7 @@ class User < ActiveRecord::Base
                        :length => {:within => 6..64},
                        :on => :create
 
-  mount_uploader :image, ImageUploader
+  mount_uploader :avatar, ImageUploader
   
   # Create user account when signing in using Facebook for the first time
   def self.from_omniauth(auth)
