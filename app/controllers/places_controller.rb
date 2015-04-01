@@ -48,7 +48,7 @@ class PlacesController < ApplicationController
   def update
     place = @place
     place.update place_params
-    redirect_to place
+    redirect_to root_path
   end
 
   def destroy

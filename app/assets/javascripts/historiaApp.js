@@ -91,7 +91,7 @@ var historiaApp = {
     var placeName = $fullPlaceName.split(',')[0];
 
     $.ajax({
-      url: 'http://en.wikipedia.org/w/api.php', 
+      url: 'https://en.wikipedia.org/w/api.php', 
       data: {
         action: 'parse',
         page: placeName,
@@ -108,7 +108,7 @@ var historiaApp = {
     var placeName = $fullPlaceName.split(',')[0];
 
     $.ajax({
-      url: 'http://en.wikipedia.org/w/api.php', 
+      url: 'https://en.wikipedia.org/w/api.php', 
       data: {
         action: 'parse',
         page: placeName,
