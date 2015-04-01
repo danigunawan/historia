@@ -1,0 +1,48 @@
+<% @place = @place || Place.new %>
+<% if @place.errors.any? %>
+  <div class="error">
+    <% @place.errors.full_messages.each do |msg| %>
+      <p><%= msg %></p>
+    <% end %>
+  </div>
+<% end %>
+<%= form_for @place do |f| %>
+  <div class="form-group-left">
+    <div class="form-group">
+      <%= f.label :name do %>
+        <i class="fa fa-globe fa-fw"></i>
+      <% end %>
+      <%= f.text_field :name, :autofocus => true, :required => true, :placeholder => 'Name' %>
+    </div>
+    <div class="form-group">
+      <%= f.label :latitude do %>
+        <i class="fa fa-map-marker fa-fw"></i>
+      <% end %>
+      <%= f.text_field :latitude, :required => true, :placeholder => 'Latitude' %>
+    </div> 
+  </div>
+  <div class="form-group-right">
+    <div class="form-group">
+      <%= f.label :longitude do %>
+        <i class="fa fa-map-marker fa-fw"></i>
+      <% end %>
+      <%= f.text_field :longitude, :required => true, :placeholder => 'Longitude' %>
+    </div>
+    <div class="form-group">
+      <%= f.label :content do %>
+        <i class="fa fa-align-left fa-fw"></i>
+      <% end %>
+      <%= f.text_field :content, :required => true, :placeholder => 'Content' %>
+    </div>
+    <div class="form-group">
+      <%= f.label :image do %>
+        <i class="fa fa-camera-retro fa-fw"></i>
+      <% end %>
+      <%= f.text_field :image, :required => true, :placeholder => 'Avatar' %>
+    </div>
+    <div class="form-group">
+      <%= f.submit 'Create place', :class => 'btn-signup-form' %>
+    </div>
+    
+  </div>
+<% end %>
