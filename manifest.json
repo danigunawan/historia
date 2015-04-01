@@ -1,0 +1,15 @@
+{
+  "name": "Historia",
+  "description": "Discover places that you didn't know existed",
+  "version": "0.1",
+  "manifest_version": 2,
+  "icons": {
+    "128": "/app/assets/images/icon_128.png"
+  },
+  "chrome_url_overrides": {
+    // "newtab": "/app/views/pages/index.html.erb"
+    "newtab": "historia-app.herokuapp.com"
+  },
+  "permissions": ["tabs"
+  ]
+}

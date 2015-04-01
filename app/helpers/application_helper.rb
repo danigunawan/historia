@@ -11,7 +11,16 @@ module ApplicationHelper
     </li>
     <li><a href="mailto:?subject=&body=:%20https%3A%2F%2Fhistoria-app.herokuapp.com%2F" target="_blank" title="Email" onclick="window.open("mailto:?subject=" + encodeURIComponent(document.title) + "&body=" +  encodeURIComponent(document.URL)); return false;"><i class="fa fa-envelope-o fa-lg"></i></a>
     </li>
-  </ul>'
-    
+  </ul>'  
+  end
+
+  def footer
+    '<footer>
+      <span>Made by Julia |</span>
+      <i class="fa fa-twitter fa-1x"></i>
+      <i class="fa fa-github-alt fa-1x"></i>
+      <i class="fa fa-linkedin fa-1x"></i>
+      <i class="fa fa-globe fa-1x"></i>
+    </footer>'
   end
 end
