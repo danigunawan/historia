@@ -1,2 +1,11 @@
-<h1>Places#edit</h1>
-<p>Find me in app/views/places/edit.html.erb</p>
+<div class="form-container">
+  <h2>Update Place</h2>
+  <%= render :partial => 'edit_form' %>
+  <div class="controls">
+    <ul>
+      <li><%= link_to('View Place', place_path(@place.id))%> |</li>
+      <li><%= button_to('Delete Place', place_delete_path(@place.id))%></li>
+    </ul>
+  </div>
+</div>
+<%== footer %>

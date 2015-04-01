@@ -23,32 +23,40 @@
               <div class="welcome nav-option">
                 <span>Hello <%= @current_user.name %></span>
               </div>
-              <% if @place == nil %>
+              <% if @current_user.is_admin? %>
                 <div class="discover nav-option">
-                  <%= link_to root_path, title: 'Discover a new place', id: 'discover' do %>
-                    <span class="btn-signout-text">Discover</span><i class="fa fa-globe fa-lg"></i>
-                  <% end %>
-                </div>
+                    <%= link_to root_path, title: 'Discover a new place', id: 'discover' do %>
+                      <span class="btn-signout-text">Discover</span><i class="fa fa-globe fa-lg"></i>
+                    <% end %>
+                  </div>
               <% else %>
-                <div class="discover nav-option">
-                  <%= link_to page_path(@place), title: 'Learn more', id: 'discover' do %>
-                    <span class="btn-signout-text">Discover</span><i class="fa fa-globe fa-lg"></i>
-                  <% end %>
-                </div>
-                <div class="game nav-option"><span>Game</span><i class="fa fa-puzzle-piece fa-lg"></i></div>
-                <div class="like-unlike nav-option">                
-                  <% if @current_user.place_ids.include? @place.id %>
-                    <span>Like</span><i class="fa fa-heart fa-lg unlike current-place" id="<%= @place.id %>"></i>
-                  <% else %>
-                    <span>Like</span><i class="fa fa-heart-o fa-lg like current-place" id="<%= @place.id %>"></i>
-                  <% end %>
-                </div>
-                <div class="share nav-option">
-                  <span>Share</span><i class="fa fa-share-alt fa-lg"></i>
-                </div>
-                <div class="share-options nav-option collapse">
-                  <%== social_share %>
-                </div>
+                <% if @place.id == nil %>
+                  <div class="discover nav-option">
+                    <%= link_to root_path, title: 'Discover a new place', id: 'discover' do %>
+                      <span class="btn-signout-text">Discover</span><i class="fa fa-globe fa-lg"></i>
+                    <% end %>
+                  </div>
+                <% else %>
+                  <div class="discover nav-option">
+                    <%= link_to page_path(@place), title: 'Learn more', id: 'discover' do %>
+                      <span class="btn-signout-text">Discover</span><i class="fa fa-globe fa-lg"></i>
+                    <% end %>
+                  </div>
+                  <div class="game nav-option"><span>Game</span><i class="fa fa-puzzle-piece fa-lg"></i></div>
+                  <div class="like-unlike nav-option">                
+                    <% if @current_user.place_ids.include? @place.id %>
+                      <span>Like</span><i class="fa fa-heart fa-lg unlike current-place" id="<%= @place.id %>"></i>
+                    <% else %>
+                      <span>Like</span><i class="fa fa-heart-o fa-lg like current-place" id="<%= @place.id %>"></i>
+                    <% end %>
+                  </div>
+                  <div class="share nav-option">
+                    <span>Share</span><i class="fa fa-share-alt fa-lg"></i>
+                  </div>
+                  <div class="share-options nav-option collapse">
+                    <%== social_share %>
+                  </div>
+                <% end %>
               <% end %>
               <div class="edit-profile nav-option">
                 <%= link_to edit_user_path(@current_user), title: "Sign out", id: "sign_out" do %>
