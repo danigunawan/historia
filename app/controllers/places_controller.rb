@@ -46,7 +46,7 @@ class PlacesController < ApplicationController
   end
 
   def update
-    place = @place
+    place = Place.find params[:id]
     place.update place_params
     redirect_to root_path
   end
