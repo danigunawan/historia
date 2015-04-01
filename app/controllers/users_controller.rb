@@ -23,7 +23,7 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @user = User.find_by :id => session[:user_id]
+    @user = User.find params[:id]
   end
 
   def show
@@ -31,7 +31,7 @@ class UsersController < ApplicationController
   end
 
   def update
-    user = @current_user
+    user = User.find params[:id]
     user.update user_params
     redirect_to user
   end
