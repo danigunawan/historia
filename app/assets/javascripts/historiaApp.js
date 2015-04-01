@@ -1,15 +1,15 @@
-window.onload = function() {
-  var startPos;
+// window.onload = function() {
+//   var startPos;
 
-  var geoSuccess = function(position) {
-    startPos = position;
-    var latitude = startPos.coords.latitude;
-    var longitude = startPos.coords.longitude;
-    $('.statLat').text(latitude);
-    $('.statLon').text(longitude);
-  };
-  navigator.geolocation.getCurrentPosition(geoSuccess);
-};
+//   var geoSuccess = function(position) {
+//     startPos = position;
+//     var latitude = startPos.coords.latitude;
+//     var longitude = startPos.coords.longitude;
+//     $('.statLat').text(latitude);
+//     $('.statLon').text(longitude);
+//   };
+//   navigator.geolocation.getCurrentPosition(geoSuccess);
+// };
 
 // var FlightRequest = {
 //   "request": {
