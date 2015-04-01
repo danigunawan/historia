@@ -24,18 +24,16 @@ gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
 
-gem 'backbone-on-rails'
+# gem 'backbone-on-rails'
 gem 'font-awesome-rails'
 gem 'omniauth'
 gem 'omniauth-facebook'
-# gem 'omniauth-twitter'
 gem 'omniauth-google-oauth2'
 gem 'carrierwave'
 gem 'cloudinary'
 gem 'mini_magick'
-# gem 'dropzonejs-rails'
 gem 'normalize-rails'
-gem 'geocoder'
+# gem 'geocoder'
 # gem 'awesome-share-buttons', github: 'evansobkowicz/awesome-share-buttons'
 gem 'rails_12factor', group: :production
 
