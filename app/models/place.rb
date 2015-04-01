@@ -17,12 +17,12 @@ class Place < ActiveRecord::Base
   has_many :photos
   has_many :likes
   has_many :users, through: :likes
+
+  mount_uploader :image, ImageUploader
   
   def self.random
     Place.order("RANDOM()").first
   end
-
-  # mount_uploader :image, ImageUploader
 
   def self.search(query)
     where("name ilike ? ", "%#{query}%")

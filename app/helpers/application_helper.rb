@@ -17,10 +17,11 @@ module ApplicationHelper
   def footer
     '<footer>
       <span>Made by Julia |</span>
-      <i class="fa fa-twitter fa-1x"></i>
-      <i class="fa fa-github-alt fa-1x"></i>
-      <i class="fa fa-linkedin fa-1x"></i>
-      <i class="fa fa-globe fa-1x"></i>
+      <a href="https://twitter.com/juliax___"><i class="fa fa-twitter fa-1x fa-fw"></i></a>
+      <a href="https://github.com/julia-""><i class="fa fa-github-alt fa-1x fa-fw"></i></a>
+      <a href="http://au.linkedin.com/in/juliaryan/"><i class="fa fa-linkedin fa-1x fa-fw"></i></a>
+      <a href="http://juliaryan.io/"><i class="fa fa-globe fa-1x fa-fw"></i></a>
+      <a href="mailto:julia.ryanx@gmail.com" alt="Let\'s talk!"><i class="fa fa-envelope-o fa-1x fa-fw"></i></a>
     </footer>'
   end
 end

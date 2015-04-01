@@ -27,16 +27,28 @@
 // };
 
 var initializeMap = function () {
+  var styles = [{"featureType":"administrative","elementType":"all","stylers":[{"visibility":"on"},{"lightness":33}]},{"featureType":"landscape","elementType":"all","stylers":[{"color":"#f2e5d4"}]},{"featureType":"landscape.natural","elementType":"geometry","stylers":[{"color":"#f3ede3"}]},{"featureType":"poi.park","elementType":"geometry","stylers":[{"color":"#c5dac6"}]},{"featureType":"poi.park","elementType":"labels","stylers":[{"visibility":"on"},{"lightness":20}]},{"featureType":"road","elementType":"all","stylers":[{"lightness":20}]},{"featureType":"road.highway","elementType":"geometry","stylers":[{"color":"#bfb9aa"}]},{"featureType":"road.arterial","elementType":"geometry","stylers":[{"color":"#e4d7c6"}]},{"featureType":"road.local","elementType":"geometry","stylers":[{"color":"#fbfaf7"}]},{"featureType":"water","elementType":"all","stylers":[{"visibility":"on"},{"color":"#97c8c6"}]}];
+
+  var styledMap = new google.maps.StyledMapType(styles,
+    {name: "Styled Map"});
+
+
   var latitude = $('.map').attr('data-latitude');
   var longitude = $('.map').attr('data-longitude');
   var $container = $('.map')[0];
 
   var mapOptions = {
     zoom: 8,
-    center: new google.maps.LatLng(latitude, longitude)
-  }
+    center: new google.maps.LatLng(latitude, longitude),
+    mapTypeControlOptions: {
+      mapTypeIds: [google.maps.MapTypeId.ROADMAP, 'map_style']
+    }
+  };
   var map = new google.maps.Map($container, mapOptions);
-};
+
+  map.mapTypes.set('map_style', styledMap);
+  map.setMapTypeId('map_style');
+}
 
 var historiaApp = {
   sortLike: function (event) {
@@ -112,14 +124,13 @@ var historiaApp = {
     var fetchedRawContent = content.parse.text['*'];
     var $createElement = $('<div/>').html(fetchedRawContent);
     var $introContent = $createElement.find('p');
-    // (/\[\d+\]/, '');
     $('.wiki-introduction').append($introContent);
   },
-    processHistWikipediaContent: function (content) {
+
+  processHistWikipediaContent: function (content) {
     var fetchedRawContent = content.parse.text['*'];
     var $createElement = $('<div/>').html(fetchedRawContent);
     var $histContent = $createElement.find('p');
-    // (/\[\d+\]/, '');
     $('.wiki-history').append($histContent);
   // },
 

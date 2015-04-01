@@ -1,17 +1,17 @@
 // FONTS
-@font-face {
-  font-family: 'Slim Joe';
-  src: url('Slim-Joe.otf', font) format("truetype");
-  font-weight: 700;
-  font-style: normal;
-}
+// @font-face {
+//   font-family: 'Slim Joe';
+//   src: url('Slim-Joe.otf', font) format("truetype");
+//   font-weight: 700;
+//   font-style: normal;
+// }
 
-@font-face {
-  font-family: 'BIG JOHN';
-  src: url('BIG-JOHN.otf', font) format("truetype");
-  font-weight: normal;
-  font-style: normal;
-}
+// @font-face {
+//   font-family: 'BIG JOHN';
+//   src: url('BIG-JOHN.otf', font) format("truetype");
+//   font-weight: normal;
+//   font-style: normal;
+// }
 
 // GLOBAL
 * {
@@ -21,7 +21,7 @@
   -webkit-margin-start: 0;
   -webkit-margin-end: 0;
   box-sizing: border-box;
-  font-family: 'Slim Joe';
+  font-family: 'Khula', sans-serif;
   outline: none;
 }
 
@@ -34,21 +34,26 @@ html, body {
   margin: 0;
   padding: 0;
 }
+
 body {
   position: relative;
 }
 
 a {
-  color: #A7C520;
+  color: #00A388;
   text-decoration: none;
 }
 
 a:hover {
   text-decoration: underline;
 }
+h1 {
+  font-family: 'Megrim', cursive;
+  font-size: 3em;
+}
 
 h2 {
-  font-family: 'Slim Joe';
+  font-family: 'Megrim', cursive;
   font-size: 1.5em;
   margin-bottom: 0.8em;
   text-align: center;
@@ -80,7 +85,6 @@ p {
   right: 0;
   bottom: 0;
   background-color: #000;
-  font-family: 'Slim Joe';
   color: #FFF;
   display: none;
   z-index: 1;
@@ -315,7 +319,6 @@ input[type="email"] {
   line-height: 1em;
   padding: 1.5em 0.5em 1.5em 3em;
   border-bottom: 2px solid #333;
-  font-family: 'BIG-JOHN';
   color: #fff;
   text-transform: uppercase;
   margin: 0 auto;
@@ -351,6 +354,9 @@ input[type="email"] {
 }
 .wiki-container {
   padding: 4em 1.5em;
+}
+.wiki-container h2 {
+  font-size: 2em;
 }
 .wiki-container p {
   font-family: arial;
@@ -399,7 +405,7 @@ ul.share-buttons li{
 
 .fa:hover {
   cursor: pointer;
-  color: #A7C520;
+  color: #00A388;
 }
 .wiki-introduction span,
 .wiki-introduction p span,
@@ -417,6 +423,11 @@ sup {
 .wiki-history p {
   padding-left: 0;
 }
+.wiki-introduction p:empty,
+.wiki-history p:empty {
+  display: none;
+}
+
 .error {
   text-align: center;
 }
@@ -428,16 +439,17 @@ footer {
   padding: 2em;
   vertical-align: middle;
   color: #fff;
-  position: absolute;
+  position: relative;
   bottom: 0;
   clear: both;
 }
 
 footer i {
   padding: 0 0.2em;
-
 }
-
+footer a {
+  color: #FFF;
+}
 iframe {
   margin: 0 auto;
   padding: 0;
@@ -446,4 +458,53 @@ iframe {
   overflow-x: hidden;
   overflow-y: hidden;
   border: none;
+}
+.edit-profile-container {
+  padding: 5em 0;
+}
+.edit-profile-container h2 {
+  text-align: left;
+  font-size: 2em;
+  padding: 1em;
+}
+
+.edit-profile-container input[type="text"],
+.edit-profile-container input[type="password"],
+.edit-profile-container input[type="email"] {
+  line-height: 3em;
+  padding-left: 1em;
+  width: 20em;
+  display: table-cell;
+  color: #212121;
+  border: 1px solid #212121;
+  border-radius: 0 0.2em 0.2em 0;
+  text-transform: uppercase;
+}
+
+.edit-profile-container label {
+  display: table-cell;
+  width: 4.5em;
+  text-align: center;
+  border: 1px solid #212121;
+  border-radius: 0.2em 0 0 0.2em;
+  border-right: none;
+}
+
+.btn-update-form {
+  margin-top: 0.5em;
+  padding: 0.8em;
+  width: 16.5em;
+  border-radius: 0.2em;
+  text-transform: uppercase;
+  font-weight: 700;
+  background-color: #00A388;
+  border: 1px solid #00A388;
+}
+label[for=user_avatar] {
+  padding: 1em;
+}
+#user_avatar {
+  border: 1px solid #212121;
+  width: 20em;
+  padding: 1em;
 }

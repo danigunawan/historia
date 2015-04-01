@@ -6,13 +6,13 @@
     <title>Historia | Discover places you didn't know existed</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href='http://fonts.googleapis.com/css?family=Khula:400,800,700,600,300|Megrim' rel='stylesheet' type='text/css'>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
     <%= csrf_meta_tags %>
     <%= favicon_link_tag 'favicon.ico' %>
   </head>
   <body>
-    <div id="fb-root"></div>
     <header>
     <div class="historia-logo"><h1>Historia</h1></div>
       <nav>
@@ -51,7 +51,7 @@
                 </div>
               <% end %>
               <div class="edit-profile nav-option">
-                <%= link_to signout_path, title: "Sign out", id: "sign_out" do %>
+                <%= link_to edit_user_path(@current_user), title: "Sign out", id: "sign_out" do %>
                   <span class="btn-signout-text">Edit profile</span><i class="fa fa-cog fa-lg"></i>
                 <% end %>
               </div>
@@ -63,7 +63,7 @@
               <i class="fa fa-close fa-2x"></i>
             </div>
           <% else %>
-          
+
             <div class="login-overlay">
               <!-- Sign in email/password -->
               <div class="signin-container">

@@ -1,8 +1,10 @@
-<h2>Update Profile</h2>
-<%= render :partial => 'form' %>
-<div class="controls">
-  <ul>
-    <li><%= link_to('View Profile', user_path(user.id))%> |</li>
-    <li><%= button_to('Delete Profile', user_delete_path(user.id))%></li>
-  </ul>
+<div class="edit-profile-container">
+  <h2>Update Profile</h2>
+  <%= render :partial => 'edit_form' %>
+  <div class="controls">
+    <ul>
+      <li><%= link_to('View Profile', user_path(@user.id))%> |</li>
+      <li><%= button_to('Delete Profile', user_delete_path(@user.id))%></li>
+    </ul>
+  </div>
 </div>

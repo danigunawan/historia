@@ -1,0 +1,45 @@
+<% @user = @user || User.new %>
+<% if @user.errors.any? %>
+  <div class="error">
+    <% @user.errors.full_messages.each do |msg| %>
+      <p><%= msg %></p>
+    <% end %>
+  </div>
+<% end %>
+<%= form_for @user do |f| %>
+  <div class="edit-profile">
+    <div class="form-group">
+      <%= f.label :name do %>
+        <i class="fa fa-user fa-fw"></i>
+      <% end %>
+      <%= f.text_field :name, :autofocus => true, :required => true, :placeholder => 'Name' %>
+    </div>
+    <div class="form-group">
+      <%= f.label :email do %>
+        <i class="fa fa-envelope-o fa-fw"></i>
+      <% end %>
+      <%= f.email_field :email, :required => true, :placeholder => 'Email' %>
+    </div> 
+    <div class="form-group">
+      <%= f.label :avatar do %>
+        <i class="fa fa-camera-retro fa-fw"></i>
+      <% end %>
+      <%= f.file_field :avatar, :required => true, :placeholder => 'Avatar' %>
+    </div> 
+    <div class="form-group">
+      <%= f.label :password do %>
+        <i class="fa fa-key fa-fw"></i>
+      <% end %>
+      <%= f.password_field :password, :required => true, :placeholder => 'Password' %>
+    </div>
+    <div class="form-group">
+      <%= f.label :password_confirmation do %>
+        <i class="fa fa-key fa-fw"></i>
+      <% end %>
+      <%= f.password_field :password_confirmation, :required => true, :placeholder => 'Confirm password' %>
+    </div>
+    <div class="form-group">
+      <%= f.submit 'Update profile', :class => 'btn-update-form' %>
+    </div>
+  </div>
+<% end %>
