@@ -427,3 +427,13 @@ footer {
 footer i {
   padding: 0 0.2em;
 }
+
+iframe {
+  margin: 0 auto;
+  padding: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  border: none;
+}
