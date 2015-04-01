@@ -34,6 +34,7 @@ module HistoriaApp
     config.action_dispatch.default_headers = {
         'X-Frame-Options' => 'ALLOWALL'
     }
+    config.assets.paths << Rails.root.join("app", "assets", "fonts")
   
   end
 
