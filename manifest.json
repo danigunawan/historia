@@ -8,7 +8,7 @@
   },
   "chrome_url_overrides": {
     // "newtab": "/app/views/pages/index.html.erb"
-    "newtab": "historia-app.herokuapp.com"
+    "newtab": "landing.html"
   },
   "permissions": ["tabs"
   ]
