@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :users, :places, :likes, :photos, :pages
   
   post '/users/:id/delete' => 'users#destroy', :as => 'user_delete'
+  post '/places/:id/delete' => 'places#destroy', :as => 'place_delete'
 
   resources :places do
     post :like, on: :member
