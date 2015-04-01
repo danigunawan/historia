@@ -1,2 +1,26 @@
-<h1>Places#show</h1>
-<p>Find me in app/views/places/show.html.erb</p>
+<div id="<%= @place.name %>"class="content">
+<!--   <p class="fact"><%= @place.fact %></p> -->
+  <div class="wiki-container">
+    <h2 class="wiki-heading"><%= @place.name %></h2>
+    <div class="wiki-introduction"></div>
+
+  <div class="main-image">
+    <%= image_tag @place.image %>
+  </div>
+
+
+    <h2 class="wiki-heading">History</h2>
+    <div class="wiki-history"></div>
+<!--     <div class="wiki-gallery"></div> -->
+  </div>
+</div>
+
+
+
+<div class="map" data-latitude="<%= @place.latitude %>" data-longitude="<%= @place.longitude %>"></div>
+<%== footer %>
+
+<!-- <div class="flights">
+  <p class="statLat"></p>
+  <p class="statLon"></p>
+</div> -->
