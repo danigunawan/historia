@@ -30,7 +30,7 @@ class PlacesController < ApplicationController
 
   def create
     @place = Place.create place_params
-    redirect_to root_path
+    redirect_to place
   end
 
   def new
@@ -48,7 +48,7 @@ class PlacesController < ApplicationController
   def update
     place = @place
     place.update place_params
-    redirect_to root_path
+    redirect_to place
   end
 
   def destroy

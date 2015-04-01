@@ -33,7 +33,7 @@ class UsersController < ApplicationController
   def update
     user = @current_user
     user.update user_params
-    redirect_to root_path
+    redirect_to user
   end
 
   def destroy
