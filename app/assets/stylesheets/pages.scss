@@ -48,13 +48,13 @@ a:hover {
   text-decoration: underline;
 }
 h1 {
-  font-family: 'Megrim', cursive;
+  font-family: 'Megrim', sans-serif;
   font-size: 3em;
   margin: 0.5em 0;
 }
 
 h2 {
-  font-family: 'Megrim', cursive;
+  font-family: 'Megrim', sans-serif;
   font-size: 1.5em;
   margin-bottom: 0.8em;
   text-align: center;
@@ -505,7 +505,7 @@ label i {
 #place_image {
   border: 1px solid #212121;
   width: 25em;
-  padding: 1em;
+  padding: 1.1em;
 }
 
 .btn-update-form {
@@ -517,4 +517,10 @@ label i {
   font-weight: 700;
   background-color: #00A388;
   border: 1px solid #00A388;
+}
+input[value="Delete Profile"] {
+  background-color: transparent;
+  border: none;
+  color: #00A388;
+  font-size: 1.1em;
 }

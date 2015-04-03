@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
       session[:user_id] = user.id
       redirect_to root_path
     else
-      flash[:error] = "Oops! Wrong email or password"
+      flash[:error] = "Oops! Looks like you've entered the wrong email or password"
       redirect_to root_path
     end
   end
@@ -19,7 +19,7 @@ class SessionsController < ApplicationController
       session[:user_id] = user.id
       redirect_to root_path   
     else
-      flash[:error] = "Oops! Wrong email or password"
+      flash[:error] = "Oops! Login not successful. Try again!"
       redirect_to root_path
     end
   end

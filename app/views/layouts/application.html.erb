@@ -30,7 +30,7 @@
                     <% end %>
                   </div>
               <% else %>
-                <% if @place.id == nil %>
+                <% if @place.nil? %>
                   <div class="discover nav-option">
                     <%= link_to root_path, title: 'Discover a new place', id: 'discover' do %>
                       <span class="btn-signout-text">Discover</span><i class="fa fa-globe fa-lg"></i>

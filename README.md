@@ -45,6 +45,7 @@ gem 'normalize-rails'
 - guessing game
 - user profile
 - ajax for all pages
+- chrome extension scrolling
 
 ### Credits
 
