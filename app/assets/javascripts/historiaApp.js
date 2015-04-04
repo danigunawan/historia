@@ -32,7 +32,6 @@ var initializeMap = function () {
   var styledMap = new google.maps.StyledMapType(styles,
     {name: "Styled Map"});
 
-
   var latitude = $('.map').attr('data-latitude');
   var longitude = $('.map').attr('data-longitude');
   var $container = $('.map')[0];
@@ -149,7 +148,6 @@ var historiaApp = {
   }
 };
 
-
 $(document).ready(function() {
 
   // Like/Unlike a place
@@ -182,4 +180,3 @@ $(document).ready(function() {
   historiaApp.fetchHistWikipediaContent();
 
 });
-

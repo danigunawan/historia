@@ -25,10 +25,10 @@
               </div>
               <% if @current_user.is_admin? %>
                 <div class="discover nav-option">
-                    <%= link_to root_path, title: 'Discover a new place', id: 'discover' do %>
-                      <span class="btn-signout-text">Discover</span><i class="fa fa-globe fa-lg"></i>
-                    <% end %>
-                  </div>
+                  <%= link_to root_path, title: 'Discover a new place', id: 'discover' do %>
+                    <span class="btn-signout-text">Discover</span><i class="fa fa-globe fa-lg"></i>
+                  <% end %>
+                </div>
               <% else %>
                 <% if @place.nil? %>
                   <div class="discover nav-option">
@@ -105,8 +105,8 @@
                     <p class="btn-google-text">Sign in with <strong>Google</strong></p>
                   <% end %>
                 </div>
-
               </div>
+
               <i class="fa fa-close fa-2x"></i>
             </div>                           
           <% end %>
