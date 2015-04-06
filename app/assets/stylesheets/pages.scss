@@ -167,7 +167,7 @@ p {
 // SIGNED IN NAVIGATION
 .main-nav {
   position: absolute;
-  width: 20%;
+  width: 55%;
   height: auto; 
   top: 0;
   right: 0;
@@ -518,6 +518,20 @@ input[value="Delete Profile"] {
   font-size: 1.1em;
 }
 
+@media only screen and (min-width: 480px) {
+  .main-nav {
+    width: 35%;
+  }
+
+}
+
+@media only screen and (min-width: 768px) {
+  .main-nav {
+    width: 25%;
+  }
+
+}
+
 @media only screen and (min-width: 1140px) {
   h1 {
     font-size: 3em;
@@ -587,5 +601,8 @@ input[value="Delete Profile"] {
   .form-group-right {
     display: inline-block;
     padding: 0 0.2em;
+  }
+  .main-nav {
+    width: 20%;
   }
 }
