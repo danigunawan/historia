@@ -9,7 +9,6 @@ user2 = User.create(:name => 'Venus', :email => 'venus@email.com', :password => 
 
 admin = User.create(:name => 'Admin', :email => 'admin@email.com', :password => 'kittens', :password_confirmation => 'kittens', :is_admin => true)
 
-
 place1 = Place.create(:name => 'Pamukkale, Turkey', :latitude => '37.9205', :longitude => '29.121', :fact => 'Pamukkale means "cotton castle" in Turkish', :content => 'Pamukkale, meaning "cotton castle" in Turkish, is a natural site in Denizli Province in southwestern Turkey. The city contains hot springs and travertines, terraces of carbonate minerals left by the flowing water.', :image => 'http://www.turklandtravel.com/wp-content/uploads/pamukkale4.jpg')
 
 # place2 = Place.create(:name => 'Borobudur, Indonesia', :latitude => '-7.608', :longitude => '110.204', :fact => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.', :content => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur dolore est necessitatibus ratione odio accusamus ut eligendi ipsa illum maiores perferendis magni, alias odit commodi nihil sunt, tempore esse voluptas.', :image => 'http://pixabay.com/get/71306a1d4ce0495499d7/1427722900/borobudur-513465_1280.jpg')

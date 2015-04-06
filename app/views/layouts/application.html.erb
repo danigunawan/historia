@@ -42,8 +42,11 @@
                       <span class="btn-signout-text">Discover</span><i class="fa fa-globe fa-lg"></i>
                     <% end %>
                   </div>
-                  <div class="game nav-option"><span>Game</span><i class="fa fa-puzzle-piece fa-lg"></i></div>
-                  <div class="like-unlike nav-option">                
+                  <div class="game nav-option">
+                    <span>Game</span><i class="fa fa-puzzle-piece fa-lg"></i>
+                  </div>
+
+                  <div class="like-unlike nav-option">
                     <% if @current_user.place_ids.include? @place.id %>
                       <span>Like</span><i class="fa fa-heart fa-lg unlike current-place" id="<%= @place.id %>"></i>
                     <% else %>
@@ -73,42 +76,45 @@
           <% else %>
 
             <div class="login-overlay">
-              <!-- Sign in email/password -->
-              <div class="signin-container">
-                <div class="general-signin signin-form">
-                  <h2>Got an account? Sign in</h2>
-                  <%= render :partial => 'sessions/form' %>
+              <div class="general-signin-container">
+                <!-- Sign in email/password -->
+                <div class="signin-container">
+                  <div class="signin-form">
+                    <h2>Got an account? Sign in</h2>
+<!--                     <div class="mobile-view">
+                      <#%= render :partial => 'sessions/form' %> 
+                    </div> -->
+                  </div>
+                </div>
+                
+                <!-- Sign up email/password -->
+                <div class="signup-container">
+                  <div class="signup-form">
+                    <h2>New to Historia? Sign up</h2>
+ <!--                    <div class="mobile-view">
+                      <#%= render :partial => 'users/form' %>
+                    </div> -->
+                  </div>
                 </div>
               </div>
-
-              <div class="facebook-container">
-                <div class="social-signin">
+            
+              <div class="social-signin-container">
+                <div class="facebook-container">
                   <%= link_to "/auth/facebook", title: "Sign up or in with Facebook", id: "sign_in" do %>
                     <i class="fa fa-facebook fa-lg"></i>
                     <p class="btn-fb-text">Sign in with <strong>Facebook</strong></p>
                   <% end %>
                 </div>
-              </div>
 
-              <!-- Sign up email/password -->
-              <div class="signup-container">
-                <div class="general-signin signup-form">
-                  <h2>New to Historia? Sign up</h2>
-                  <%= render :partial => 'users/form' %>
-                </div>
-              </div>
-
-              <div class="google-container">
-                <div class="social-signin">
+                <div class="google-container">
                   <%= link_to "/auth/google_oauth2", title: "Sign up or in with Google", id: "sign_in" do %>
                     <i class="fa fa-google fa-lg"></i>
                     <p class="btn-google-text">Sign in with <strong>Google</strong></p>
                   <% end %>
                 </div>
               </div>
-
               <i class="fa fa-close fa-2x"></i>
-            </div>                           
+            </div>                          
           <% end %>
         </div>
       </nav>
