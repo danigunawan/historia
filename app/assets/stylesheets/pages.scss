@@ -86,7 +86,6 @@ p {
 
 .mobile-view {
   display: none;
-  visibility: hidden;
 }
 
 .signin-container,
@@ -127,6 +126,7 @@ p {
 }
 
 .signup-container {
+  color: $primary-color;
   background-color: #FFF;
 }
 
@@ -135,12 +135,12 @@ p {
   text-align: center;
 }
 
-.signin-form {
-  text-align: left;
-}
+// .signin-form {
+//   text-align: left;
+// }
 
 .signup-form {
-  color: #000;
+  color: #212121;
   text-align: center;
 }
 
@@ -205,15 +205,6 @@ p {
   margin: 0 auto;
   padding: 0.4em 0;
 }
-.form-group-left {
-  display: inline-block;
-  vertical-align: top;
-  padding: 0 0.2em;
-}
-.form-group-right {
-  display: inline-block;
-  padding: 0 0.2em;
-}
 
 form {
   font-size: 0.9em;
@@ -241,14 +232,17 @@ input[type="email"] {
   border-radius: 0 0.2em 0.2em 0;
   text-transform: uppercase;
 }
+
 .signup-form input {
   color: #212121;
   border: 1px solid #212121;
 }
+
 .signup-form label {
   border: 1px solid #212121;
   border-right: none;
 }
+
 .fa {
   display: inline-block;
 }
@@ -268,12 +262,15 @@ input[type="email"] {
   z-index: 100;
   cursor: pointer;
 }
+
 .fa-bars {
   color: $primary-color;
 }
+
 .fa-close {
   color: #FFF;
 }
+
 .nav-bar {
   position: absolute;
   bottom: 0;
@@ -284,6 +281,7 @@ input[type="email"] {
   opacity: 0.8;
   // z-index: 1;
 }
+
 .nav-bar > div {
   display: inline-block;
   width: 24%;
@@ -311,6 +309,7 @@ input[type="email"] {
   text-transform: uppercase;
   margin: 0 auto;
 }
+
 .welcome {
   margin-top: 3.5em;
 }
@@ -328,63 +327,75 @@ input[type="email"] {
   overflow: hidden;
   margin: 0 auto;
 }
+
 .main-image img {
   width: 100%;
   height: auto !important;
   display: block;
 }
+
 .map {
   display: inline-block;
   width: 100%;
   height: 80vh;
   margin: 0 auto;
-  // border: 2px solid #000;
 }
+
 .wiki-container {
   padding: 4em 1.5em;
 }
+
 .wiki-container h2 {
   font-size: 2em;
 }
+
 .wiki-container p {
   font-family: arial;
   text-transform: normal;
   text-align: left;
 }
+
 .wiki-container a {
   font-family: arial;
   text-transform: normal;
   text-align: left;
 }
+
 .wiki-heading {
   text-align: left;
   padding-top: 1.5em;
 }
+
 .results-index {
   width: 50%;
   min-width: 40%;
   padding: 4.5em 3em;
 }
+
 .results-index h2 {
   text-align: left;
 }
+
 .results-index h3 {
   margin: 1.5em 0 0.5em 0;
   border-bottom: 1px solid #212121;
 }
+
 .user-list li,
 .controls li {
   list-style-type: none;
 }
+
 .controls li {
   display: inline-block;
 }
-ul.share-buttons{
+
+.share-buttons {
   list-style: none;
   padding: 0;
 }
 
-ul.share-buttons li{
+.share-buttons li {
   display: inline;
 }
 .collapse {
@@ -395,6 +406,7 @@ ul.share-buttons li{
   cursor: pointer;
   color: #00A388;
 }
+
 .wiki-introduction span,
 .wiki-introduction p span,
 .wiki-history span,
@@ -402,6 +414,7 @@ ul.share-buttons li{
 sup {
   display: none;
 }
+
 .wiki-introduction {
   width: 45%;
   display: inline-block;
@@ -497,17 +510,22 @@ label i {
   background-color: #00A388;
   border: 1px solid #00A388;
 }
+
 input[value="Delete Profile"] {
   background-color: transparent;
   border: none;
   color: #00A388;
   font-size: 1.1em;
 }
+
 @media only screen and (min-width: 1140px) {
-    h1 {
-    font-family: 'Megrim', sans-serif;
+  h1 {
     font-size: 3em;
     margin: 0.5em 0;
+  }
+
+  .hero {
+    min-width: 1024px;
   }
 
   .google-container,
@@ -522,7 +540,52 @@ input[value="Delete Profile"] {
     color: #fff;
     transform: scale(1);
   }
-  .hero {
-    min-width: 1024px;
+
+  .signup-container,
+  .signin-container {
+    padding: 3em 0;
+  }
+
+  .google-container,
+  .facebook-container {
+    padding: 10em 0;
+  }
+
+  .signup-container {
+    color: $primary-color;
+  }
+
+  .social-signin {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 50%;
+    height: 50%;
+    min-height: 50%;
+  }
+
+  .general-signin {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 75%;
+    min-height: 50%;
+  }
+  .mobile-view {
+    display: block;
+  }
+
+  .form-group-left {
+    display: inline-block;
+    vertical-align: top;
+    padding: 0 0.2em;
+  }
+
+  .form-group-right {
+    display: inline-block;
+    padding: 0 0.2em;
   }
 }

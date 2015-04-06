@@ -79,21 +79,17 @@
               <div class="general-signin-container">
                 <!-- Sign in email/password -->
                 <div class="signin-container">
-                  <div class="signin-form">
-                    <h2>Got an account? Sign in</h2>
-<!--                     <div class="mobile-view">
-                      <#%= render :partial => 'sessions/form' %> 
-                    </div> -->
+                  <h2>Got an account? Sign in</h2>
+                  <div class="signin-form mobile-view">
+                    <%= render :partial => 'sessions/form' %> 
                   </div>
                 </div>
                 
                 <!-- Sign up email/password -->
                 <div class="signup-container">
-                  <div class="signup-form">
-                    <h2>New to Historia? Sign up</h2>
- <!--                    <div class="mobile-view">
-                      <#%= render :partial => 'users/form' %>
-                    </div> -->
+                  <h2>New to Historia? Sign up</h2>
+                  <div class="signup-form mobile-view">
+                    <%= render :partial => 'users/form' %>
                   </div>
                 </div>
               </div>

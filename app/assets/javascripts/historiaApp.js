@@ -153,19 +153,23 @@ $(document).ready(function() {
   // Like/Unlike a place
   $('.current-place').on('click', historiaApp.sortLike);
 
-  // Display signin/signup popup 
-  $('.fa-bars').on('click', function() {
-    $('.fa-bars').addClass('hide');
-    $('.login-overlay').addClass('show');
-    $('.main-nav').addClass('show');
+  // Display/hide signin/signup popup 
+  $('.fa-bars, .fa-close').on('click', function() {
+    $('.fa-bars').toggleClass('hide');
+    $('.login-overlay').toggleClass('show');
+    $('.main-nav').toggleClass('show');
   });
 
-  // Hide signin/signup popup 
-  $('.fa-close').on('click', function() {
-    $('.login-overlay').removeClass('show');
-    $('.main-nav').removeClass('show');
-    $('.fa-bars').removeClass('hide');
+  $('.signin-container h2').on('click', function() {
+    $('.signin-form').toggleClass('mobile-view');
+    $('.signin-container').css('height', 'auto');
   });
+
+  $('.signup-container h2').on('click', function() {
+    $('.signup-form').toggleClass('mobile-view');
+    $('.signup-container').css('height', 'auto');
+  });
+
 
   // Show/Hide social media share buttons
   $('.fa-share-alt').on('click', function() {
