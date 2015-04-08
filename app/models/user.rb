@@ -15,9 +15,12 @@
 #  oauth_expires_at :string
 #  created_at       :datetime         not null
 #  updated_at       :datetime         not null
+#  remember_digest  :string
 #
 
 class User < ActiveRecord::Base
+  attr_accessor :remember_token
+
   has_many :likes
   has_many :places, through: :likes
 
@@ -52,6 +55,30 @@ class User < ActiveRecord::Base
       user.oauth_expires_at = Time.at(auth.credentials.expires_at)
       user.save!
     end
+  end
+
+  def User.digest(string)
+    cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
+                                                  BCrypt::Engine.cost
+    BCrypt::Password.create(string, cost: cost)
+  end
+
+  def User.new_token
+    SecureRandom.urlsafe_base64
+  end
+
+  def remember
+    self.remember_token = User.new_token
+    update_attribute(:remember_digest, User.digest(remember_token))
+  end
+
+  def check_authenticated?(remember_token)
+    return false if remember_digest.nil?
+    BCrypt::Password.new(remember_digest).is_password?(remember_token)
+  end
+
+  def forget
+    update_attribute(:remember_digest, nil)
   end
 
   def self.search(query)

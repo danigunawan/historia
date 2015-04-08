@@ -18,7 +18,7 @@
       <nav>
         <div>
           <i class="fa fa-bars fa-2x"></i>
-          <% if @current_user %>
+          <% if logged_in? %>
             <div class="main-nav">
               <div class="welcome nav-option">
                 <span>Hello <%= @current_user.name %></span>
@@ -116,6 +116,9 @@
       </nav>
     </header>
     <div class="container">
+      <% flash.each do |message_type, message| %>
+        <%= content_tag(:div, message, class: "alert alert-#{message_type}") %>
+      <% end %>
       <%= yield %>
     </div>
     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAvR3BhgABRhezAKkvzbyI3FEjmvJcCfb4"></script>

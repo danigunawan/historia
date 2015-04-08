@@ -12,10 +12,11 @@ class UsersController < ApplicationController
   def create
     @user = User.new user_params
     if @user.save
-      session[:user_id] = @user.id
+      log_in @user
       flash[:success] = "You've successfully signed up!"
       redirect_to root_path
     else
+      flash.now[:error] = "Oops! There was a problem with signing up. Try again."
       redirect_to root_path
     end
   end
@@ -45,11 +46,12 @@ class UsersController < ApplicationController
   end
 
   private 
-  def user_params
-    params.require(:user).permit(:name, :email, :password, :password_confirmation, :avatar, :is_admin, :remote_avatar_url)
-  end
 
-  def check_if_admin
-    redirect_to(root_path) unless @current_user.present? && @current_user.is_admin?
-  end
+    def user_params
+      params.require(:user).permit(:name, :email, :password, :password_confirmation, :avatar, :is_admin, :remote_avatar_url)
+    end
+
+    def check_if_admin
+      redirect_to(root_path) unless @current_user.present? && @current_user.is_admin?
+    end
 end

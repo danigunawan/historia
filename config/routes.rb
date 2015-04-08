@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   root :to => 'pages#index'
 
   resources :users, :places, :likes, :photos, :pages
+  resources :account_activations, only: [:edit]
   
   post '/users/:id/delete' => 'users#destroy', :as => 'user_delete'
   post '/places/:id/delete' => 'places#destroy', :as => 'place_delete'
