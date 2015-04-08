@@ -24,7 +24,7 @@ class User < ActiveRecord::Base
   has_many :likes
   has_many :places, through: :likes
 
-  # Ensure email uniqueness by downcasing the email attribute.
+  # Ensures email uniqueness by downcasing the email attribute.
   before_save { self.email = email.downcase }
 
   validates :name,  presence: true, length: { maximum: 127 }
@@ -57,30 +57,36 @@ class User < ActiveRecord::Base
     end
   end
 
-  def User.digest(string)
+  # Used to store the randomly generated token as the remember_digest
+  def self.digest(string)
     cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
                                                   BCrypt::Engine.cost
     BCrypt::Password.create(string, cost: cost)
   end
 
-  def User.new_token
+  # Creates a randomly generated token
+  def self.new_token
     SecureRandom.urlsafe_base64
   end
 
+  # Saves the randomly generated token as the remember_digest
   def remember
     self.remember_token = User.new_token
     update_attribute(:remember_digest, User.digest(remember_token))
   end
 
+  # Compares the remember_digest with the remember_token using BCrypt method
   def check_authenticated?(remember_token)
     return false if remember_digest.nil?
     BCrypt::Password.new(remember_digest).is_password?(remember_token)
   end
 
+  # Replaces the contents of the remember_digest with nil
   def forget
     update_attribute(:remember_digest, nil)
   end
 
+  # Search across users by name or email address
   def self.search(query)
     where("name ilike ? OR email ilike?  ", "%#{query}%", "%#{query}%")
   end

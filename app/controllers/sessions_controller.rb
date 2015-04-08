@@ -6,7 +6,7 @@ class SessionsController < ApplicationController
     user = User.find_by :email => params[:email].downcase
     if user.present? && user.authenticate(params[:password])
       log_in user
-      params[:remember_me] == '1' ? remember(user) : forget(user)
+      params[:session][:remember_me] == '1' ? remember(user) : forget(user)
       redirect_to root_path, sucess: "You've successfully signed in."
     else
       flash.now[:error] = "Oops! The wrong email or password was entered. Try again."
