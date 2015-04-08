@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  before_action :check_if_admin, :only => [:index, :destroy]
+
   def index
     if params[:search]
       @users = User.search(params[:search]).order(:name)
@@ -45,5 +47,9 @@ class UsersController < ApplicationController
   private 
   def user_params
     params.require(:user).permit(:name, :email, :password, :password_confirmation, :avatar, :is_admin, :remote_avatar_url)
+  end
+
+  def check_if_admin
+    redirect_to(root_path) unless @current_user.present? && @current_user.is_admin?
   end
 end

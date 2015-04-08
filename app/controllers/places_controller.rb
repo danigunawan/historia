@@ -1,4 +1,6 @@
 class PlacesController < ApplicationController
+  before_action :check_if_admin, :except => [:index, :like, :show]
+
   def index
     if params[:search]
       @places = Place.search(params[:search]).order(:name)
@@ -60,5 +62,9 @@ class PlacesController < ApplicationController
   private 
   def place_params
     params.require(:place).permit(:name, :latitude, :longitude, :image, :fact, :content, :remote_image_url)
+  end
+
+  def check_if_admin
+    redirect_to(root_path) unless @current_user.present? && @current_user.is_admin?
   end
 end
