@@ -12,9 +12,12 @@ class UsersController < ApplicationController
   def create
     @user = User.new user_params
     if @user.save
-      log_in @user
-      flash[:success] = "You've successfully signed up!"
-      redirect_to root_path
+      @user.send_activation_email
+      flash[:info] = "Check your email to activate your account."
+      redirect_to root_url
+      # log_in @user
+      # flash[:success] = "You've successfully signed up!"
+      # redirect_to root_path
     else
       flash.now[:error] = "Oops! There was a problem with signing up. Try again."
       redirect_to root_path

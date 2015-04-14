@@ -1,8 +1,13 @@
 Rails.application.routes.draw do
+  get 'password_resets/new'
+
+  get 'password_resets/edit'
+
   root :to => 'pages#index'
 
   resources :users, :places, :likes, :photos, :pages
   resources :account_activations, only: [:edit]
+  resources :password_resets, only: [:new, :create, :edit, :update]
   
   post '/users/:id/delete' => 'users#destroy', :as => 'user_delete'
   post '/places/:id/delete' => 'places#destroy', :as => 'place_delete'

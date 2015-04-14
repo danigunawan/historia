@@ -3,7 +3,7 @@
   <%= render :partial => 'edit_form' %>
   <div class="controls">
     <ul>
-      <li><%= link_to('View Profile', user_path(@user.id))%> |</li>
+      <li><%= link_to('View Profile', user_path(@user.id))%> <span>|</span></li>
       <li><%= button_to('Delete Profile', user_delete_path(@user.id))%></li>
     </ul>
   </div>

@@ -1,0 +1,10 @@
+Hi <%= @user.name %>,
+
+You recently signed up to Historia. Click the below link to activate your account.
+
+<%= edit_account_activation_url(@user.activation_token, email: @user.email) %>
+
+If you didn't sign up to Historia, ignore this email.
+
+Thank you,
+Historia Team

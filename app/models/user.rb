@@ -2,45 +2,62 @@
 #
 # Table name: users
 #
-#  id               :integer          not null, primary key
-#  name             :string
-#  email            :string
-#  password_digest  :string
-#  avatar           :text
-#  guess_count      :integer          default("0")
-#  is_admin         :boolean          default("false")
-#  provider         :string
-#  uid              :string
-#  oauth_token      :string
-#  oauth_expires_at :string
-#  created_at       :datetime         not null
-#  updated_at       :datetime         not null
-#  remember_digest  :string
+#  id                :integer          not null, primary key
+#  name              :string
+#  email             :string
+#  password_digest   :string
+#  avatar            :text
+#  guess_count       :integer          default("0")
+#  is_admin          :boolean          default("false")
+#  provider          :string
+#  uid               :string
+#  oauth_token       :string
+#  oauth_expires_at  :string
+#  created_at        :datetime         not null
+#  updated_at        :datetime         not null
+#  remember_digest   :string
+#  activation_digest :string
+#  activated         :boolean          default("false")
+#  activated_at      :datetime
+#  reset_digest      :string
+#  reset_sent_at     :datetime
 #
 
 class User < ActiveRecord::Base
-  attr_accessor :remember_token
+  attr_accessor :remember_token, :activation_token
 
   has_many :likes
   has_many :places, through: :likes
 
   # Ensures email uniqueness by downcasing the email attribute.
-  before_save { self.email = email.downcase }
+  before_save :downcase_email
+  before_create :create_activation_digest
 
-  validates :name,  presence: true, length: { maximum: 127 }
+  validates :name,  presence: true, 
+                    length: { maximum: 127 }
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
-  validates :email, presence: true, length: { maximum: 255 },
+  validates :email, presence: true, 
+                    length: { maximum: 255 },
                     format: { with: VALID_EMAIL_REGEX },
                     uniqueness: { case_sensitive: false }
 
   has_secure_password
-  validates :password, :presence => true,
-                       :confirmation => true,
-                       :length => {:within => 6..64},
-                       :on => :create
+  validates :password, presence: true,
+                       confirmation: true,
+                       length: { within: 6..64 },
+                       on: :create
 
   mount_uploader :avatar, ImageUploader
+
+  def activate
+    update_attribute(:activated, true)
+    update_attribute(:activated_at, Time.zone.now)
+  end
+
+  def send_activation_email
+    UserMailer.account_activation(self).deliver_now
+  end
   
   # Create user account when signing in using Facebook for the first time
   def self.from_omniauth(auth)
@@ -76,8 +93,9 @@ class User < ActiveRecord::Base
   end
 
   # Compares the remember_digest with the remember_token using BCrypt method
-  def check_authenticated?(remember_token)
-    return false if remember_digest.nil?
+  def check_authenticated?(attribute, token)
+    digest = send("#{attribute}_digest")
+    return false if digest.nil?
     BCrypt::Password.new(remember_digest).is_password?(remember_token)
   end
 
@@ -90,4 +108,14 @@ class User < ActiveRecord::Base
   def self.search(query)
     where("name ilike ? OR email ilike?  ", "%#{query}%", "%#{query}%")
   end
+
+  private
+    def downcase_email
+      self.email = email.downcase
+    end
+
+    def create_activation_digest
+      self.activation_token = User.new_token
+      self.activation_digest = User.digest(activation_token)
+    end
 end

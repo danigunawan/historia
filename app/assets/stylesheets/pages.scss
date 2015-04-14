@@ -209,6 +209,7 @@ p {
   display: table;
   margin: 0 auto;
   padding: 0.4em 0;
+  margin-bottom: 0.5em;
 }
 
 form {
@@ -403,8 +404,12 @@ input[type="email"] {
 
 .controls li {
   display: inline-block;
+  text-transform: uppercase;
 }
 
+.controls span {
+  padding-left: 0.4em;
+}
 .share-buttons {
   list-style: none;
   padding: 0;
@@ -470,13 +475,12 @@ footer a {
 .form-container {
   padding: 5em 0;
 }
+
 .form-container h2 {
   font-size: 2.5em;
   padding: 1em 1em 0.5em 1em;
 }
-.form-group {
-  margin-bottom: 1em;
-}
+
 .form-container input[type="text"],
 .form-container input[type="password"],
 .form-container input[type="email"] {
@@ -531,6 +535,7 @@ input[value="Delete Profile"] {
   border: none;
   color: #00A388;
   font-size: 1.1em;
+  text-transform: uppercase;
 }
 
 @media only screen and (min-width: 480px) {

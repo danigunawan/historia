@@ -2,20 +2,14 @@
   <div class="wiki-container">
     <h2 class="wiki-heading"><%= @place.name %></h2>
     <div class="wiki-introduction"></div>
-
   <div class="main-image">
     <%= image_tag @place.image %>
   </div>
-
-
     <h2 class="wiki-heading">History</h2>
     <div class="wiki-history"></div>
 <!--     <div class="wiki-gallery"></div> -->
   </div>
 </div>
-
-
-
 <div class="map" data-latitude="<%= @place.latitude %>" data-longitude="<%= @place.longitude %>"></div>
 <%== footer %>
 

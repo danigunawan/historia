@@ -1,0 +1,12 @@
+<h1>Historia</h1>
+
+<p>Hi <%= @user.name %>,</p>
+
+<p>You recently signed up to Historia. Click the below link to activate your account.</p>
+
+<%= link_to "Activate account",edit_account_activation_url(@user.activation_token, email: @user.email) %>
+
+<p>If you didn't sign up to Historia, ignore this email.</p>
+
+<p>Thank you,</p>
+<p>Historia Team</p>

@@ -5,9 +5,19 @@ class SessionsController < ApplicationController
   def create
     user = User.find_by :email => params[:email].downcase
     if user.present? && user.authenticate(params[:password])
-      log_in user
-      params[:remember_me] == '1' ? remember(user) : forget(user)
-      redirect_to root_path, sucess: "You've successfully signed in."
+      if user.activated?
+        log_in user
+        params[:session][:remember_me] == '1' ? remember(user) : forget(user)
+        redirect_back_or user
+      else
+        message  = "Account not activated. "
+        message += "Check your email for the activation link."
+        flash[:warning] = message
+        redirect_to root_url
+      end
+      # log_in user
+      # params[:remember_me] == '1' ? remember(user) : forget(user)
+      # redirect_to root_path, sucess: "You've successfully signed in."
     else
       flash.now[:error] = "Oops! The wrong email or password was entered. Try again."
       redirect_to root_path # Need to change this to render the login page
