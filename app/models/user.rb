@@ -80,6 +80,8 @@ class User < ActiveRecord::Base
       user.password_confirmation = auth.uid
       user.oauth_token = auth.credentials.token
       user.oauth_expires_at = Time.at(auth.credentials.expires_at)
+      user.activated = true
+      user.activated_at = Time.zone.now
       user.save!
     end
   end
