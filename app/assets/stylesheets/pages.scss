@@ -616,6 +616,10 @@ input[value="Delete Profile"] {
   font-size: 1.1em;
   text-transform: uppercase;
 }
+.edit-profile-controls ul {
+  text-align: center;
+  -webkit-padding-start: 0;
+}
 
 @media only screen and (min-width: 480px) {
   .main-nav {
