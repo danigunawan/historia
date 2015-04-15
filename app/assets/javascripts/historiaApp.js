@@ -123,6 +123,9 @@ var historiaApp = {
     var fetchedRawContent = content.parse.text['*'];
     var $createElement = $('<div/>').html(fetchedRawContent);
     var $introContent = $createElement.find('p');
+    $introContent.find('a[href^="/wiki/"]').each(function (i, e) {
+      $(e).attr('href', 'http://en.wikipedia.org' + $(e).attr('href'));
+    });
     $('.wiki-introduction').append($introContent);
   },
 
