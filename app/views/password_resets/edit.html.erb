@@ -1,5 +1,6 @@
-<% provide(:title, 'Reset password') %>
-<h1>Reset password</h1>
+<div class="form-container">
+  <% provide(:title, 'Reset password') %>
+  <h1>Reset password</h1>
 
   <%= form_for(@user, url: password_reset_path(params[:id])) do |f| %>
 
@@ -17,5 +18,10 @@
       <% end %>
       <%= f.password_field :password_confirmation, :placeholder => 'Confirm password' %>
     </div>
-    <%= f.submit "Update password", class: "btn-submit" %>
+    <div class="form-group">
+      <%= f.submit "Update password", class: "btn-submit" %>
+    </div>
   <% end %>
+  
+</div>
+<%== footer %>

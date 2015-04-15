@@ -1,11 +1,16 @@
-<% provide(:title, "Forgot password") %>
-<h1>Forgot password</h1>
-<%= form_for(:password_reset, url: password_resets_path) do |f| %>
-  <div class="form-group">
-    <%= f.label :email do %>
-      <i class="fa fa-envelope-o fa-fw"></i>
-    <% end %>
-    <%= f.email_field :email, :required => true, :placeholder => 'Email' %>
-  </div>
-    <%= f.submit "Submit", class: "btn-submit" %>
-<% end %>
+<div class="form-container">
+  <% provide(:title, "Forgot password") %>
+  <h2>Forgot your password?</h2>
+  <%= form_for(:password_reset, url: password_resets_path) do |f| %>
+    <div class="form-group">
+      <%= f.label :email do %>
+        <i class="fa fa-envelope-o fa-fw"></i>
+      <% end %>
+      <%= f.email_field :email, :required => true, :placeholder => 'Email' %>
+    </div>
+    <div class="form-group">
+      <%= f.submit "Submit", class: "btn-submit" %>
+    </div>
+  <% end %>
+</div>
+<%== footer %>
