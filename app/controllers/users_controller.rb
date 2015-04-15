@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :check_if_admin, :only => [:index, :destroy]
-  before_action :check_if_validate_user, :only => [:edit, :update]
+  # before_action :check_if_validate_user, :only => [:edit, :update]
 
   def index
     if params[:search]
