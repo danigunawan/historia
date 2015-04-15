@@ -62,8 +62,13 @@
                 <% end %>
               <% end %>
               <div class="edit-profile nav-option">
-                <%= link_to edit_user_path(@current_user), title: "Sign out", id: "sign_out" do %>
-                  <span class="btn-signout-text">Edit profile</span><i class="fa fa-cog fa-lg"></i>
+                <%= link_to user_path(@current_user), title: "View profile", id: "show_profile" do %>
+                  <span class="btn-signout-text">View profile</span><i class="fa fa-cog fa-lg"></i>
+                <% end %>
+              </div>
+              <div class="edit-profile nav-option">
+                <%= link_to edit_user_path(@current_user), title: "Update profile", id: "edit_profile" do %>
+                  <span class="btn-signout-text">Update profile</span><i class="fa fa-cog fa-lg"></i>
                 <% end %>
               </div>
               <div class="signout nav-option">

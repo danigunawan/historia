@@ -1,10 +1,23 @@
-<h1>View Profile</h1>
-<p><%= @user.name %></p>
-<p><%= @user.email %></p>
-<p><%= @user.created_at.strftime('%B, %Y') %></p>
-<div class="controls">
-  <ul>
-    <li><%= link_to('Edit Profile', edit_user_path(@user.id))%> |</li>
-    <li><%= button_to('Delete Profile', user_delete_path(@user.id))%></li>
-  </ul>
+<div class="view-profile-container">
+  <h2><%= @user.name %></h2>
+  <div class="profile-details">
+    <p><span class="profile-label">Email</span> <%= @user.email %></p>
+    <p><span class="profile-label">Joined</span> <%= @user.created_at.strftime('%B, %Y') %></p>
+  </div>
+  <%= image_tag @user.avatar, class: 'avatar' %>
+  <div class="controls view-profile-controls">
+    <ul>
+      <li><%= link_to('Edit Profile', edit_user_path(@user.id))%> |</li>
+      <li><%= button_to('Delete Profile', user_delete_path(@user.id))%></li>
+    </ul>
+  </div>
+  <div class="liked-places">
+    <h3>Places you've liked</h3>
+      <ul>
+        <% @user.likes.each do |like| %>
+          <li><%= like.place.name %> | <%= link_to('View', page_path(like.place_id))%></li>
+        <% end %>
+      </ul>
+  </div>
 </div>
+<%== footer %>

@@ -15,9 +15,6 @@ class SessionsController < ApplicationController
         flash[:warning] = message
         redirect_to root_path
       end
-      # log_in user
-      # params[:remember_me] == '1' ? remember(user) : forget(user)
-      # redirect_to root_path, sucess: "You've successfully signed in."
     else
       flash.now[:error] = "Oops! The wrong email or password was entered. Try again."
       redirect_to root_path # Need to change this to render the login page

@@ -54,6 +54,12 @@ h2 {
   text-align: center;
 }
 
+h3 {
+  font-family: $heading;
+  font-size: 1.75em;
+  margin-bottom: 0.8em;
+}
+
 p {
   padding: 0.5em;
 }
@@ -407,7 +413,9 @@ input[type="email"] {
   margin: 1.5em 0 0.5em 0;
   border-bottom: 1px solid #212121;
 }
-
+.controls {
+  padding-top: 1em;
+}
 .user-list li,
 .controls li {
   list-style-type: none;
@@ -482,13 +490,72 @@ footer i {
 footer a {
   color: #FFF;
 }
+.profile-details {
+  display: inline-block;
+  padding: 1.25em;
+  margin: 0em 2em 0em 3.75em;
+}
+.profile-details p {
+  padding-left: 2.5em;
+  font-size: 1.1em;
+}
 
-.form-container {
-  height: 90vh;
+.liked-places {
+  margin-top: 2em;
+  // background-color: #dedbd8;
+  padding-bottom: 2em;
+}
+
+.liked-places ul {
+  padding: 2em;
+}
+
+.liked-places li {
+  padding-left: 4.5em;
+}
+
+.view-profile-container h3 {
+  padding: 2em 1em 0.15em 1em;
+  margin: 0em 3em;
+  border-bottom: 2px solid $primary-color;
+}
+
+.view-profile-container ul {
+  list-style-type: none;
+  font-size: 1.1em;
+}
+
+.view-profile-container h2 {
+  text-align: left;
+  font-size: 2.5em;
+  padding: 1em 1em 0.15em 1em;
+  margin: 0em 2em;
+  border-bottom: 2px solid $primary-color;
+}
+
+.profile-label {
+  text-transform: uppercase;
+  font-weight: 700;
+}
+.avatar {
+  width: 20%;
+  height: auto;
+  vertical-align: top;
+  margin: 1.5em 0em 0em 1.5em;
+}
+.view-profile-controls {
+  margin: 1.5em 0em 0em 1.5em;
+  padding-left: 3.5em;
+}
+
+.form-container,
+.view-profile-container {
+  min-height: 100vh;
+  height: 100%;
   padding: 5em 0;
 }
 
-.form-container h2 {
+.form-container h2{
   font-size: 2.5em;
   padding: 1em 1em 0.5em 1em;
 }
