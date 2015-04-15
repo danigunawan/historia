@@ -56,6 +56,6 @@ class UsersController < ApplicationController
     redirect_to(root_path) unless @current_user.present? && @current_user.is_admin?
   end
   def check_if_validate_user
-    redirect_to(root_path) unless @current_user.id == params[:id]
+    redirect_to(root_path) unless @current_user.id == User.find params[:id]
   end
 end
