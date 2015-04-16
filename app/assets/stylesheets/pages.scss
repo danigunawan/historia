@@ -294,14 +294,7 @@ input[type="email"] {
   padding: 0.5em 1em;
   z-index: 100;
   cursor: pointer;
-}
-
-.fa-bars {
   color: $primary-color;
-}
-
-.fa-close {
-  color: #FFF;
 }
 
 .nav-bar {
@@ -642,9 +635,9 @@ input[value="Delete Profile"] {
   }
 
   .hero {
-    min-width: 1024px;
+    width: 100%;
+    background-size: cover;
   }
-
   .google-container,
   .facebook-container,
   .signup-container,
