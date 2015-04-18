@@ -72,6 +72,7 @@ p {
   height: auto;
   top: 0;
   left: 0;
+  background-size: cover;
 }
 
 // SIGN IN/SIGN UP OVERLAY & OPTIONS
@@ -618,6 +619,10 @@ input[value="Delete Profile"] {
   .main-nav {
     width: 35%;
   }
+  .hero {
+    width: 100%;
+    background-size: cover;
+  }
 
 }
 
@@ -625,18 +630,12 @@ input[value="Delete Profile"] {
   .main-nav {
     width: 25%;
   }
-
 }
 
 @media only screen and (min-width: 1140px) {
   h1 {
     font-size: 3em;
     margin: 0.5em 0;
-  }
-
-  .hero {
-    width: 100%;
-    background-size: cover;
   }
   .google-container,
   .facebook-container,

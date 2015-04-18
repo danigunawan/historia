@@ -47,7 +47,7 @@ var initializeMap = function () {
 
   map.mapTypes.set('map_style', styledMap);
   map.setMapTypeId('map_style');
-}
+};
 
 var historiaApp = {
   sortLike: function (event) {
