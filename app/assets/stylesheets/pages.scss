@@ -1,5 +1,5 @@
-$primary-color: #212121;
 $secondary-color: #00A388;
+$primary-color: #212121;
 $facebook-main: #3A5795;
 $facebook-hover: #3C5A77;
 $google-main: #DD4B39;
@@ -35,10 +35,9 @@ body {
 a {
   color: $secondary-color;
   text-decoration: none;
-}
-
-a:hover {
-  text-decoration: underline;
+  &:hover {
+    text-decoration: underline;
+  }
 }
 
 h1 {
@@ -195,7 +194,7 @@ p {
   top: 0;
   right: 0;
   color: #FFF;
-  background-color: #212121;
+  background-color: $primary-color;
   display: none;
   z-index: 1;
 }
@@ -252,7 +251,7 @@ input[type="email"] {
   padding-left: 1em;
   line-height: 2.5em;
   text-transform: uppercase;
-  color: #212121;
+  color: $primary-color;
   border: 1px solid #fff;
   border-radius: 0 0.2em 0.2em 0;
 }
@@ -262,12 +261,12 @@ input[type="email"] {
 }
 
 .signup-form input {
-  color: #212121;
-  border: 1px solid #212121;
+  color: $primary-color;
+  border: 1px solid $primary-color;
 }
 
 .signup-form label {
-  border: 1px solid #212121;
+  border: 1px solid $primary-color;
   border-right: none;
 }
 .form-checkbox {
@@ -295,6 +294,12 @@ input[type="email"] {
   padding: 0.5em 1em;
   z-index: 100;
   cursor: pointer;
+  color: #fff;
+}
+.fa-close {
+  color: #fff;
+}
+.fa-bars {
   color: $primary-color;
 }
 
@@ -302,11 +307,9 @@ input[type="email"] {
   position: absolute;
   bottom: 0;
   width: 100%;
-  // height: 10%;
   min-height: 7%;
   background-color: #000;
   opacity: 0.8;
-  // z-index: 1;
 }
 
 .nav-bar > div {
@@ -405,7 +408,7 @@ input[type="email"] {
 
 .results-index h3 {
   margin: 1.5em 0 0.5em 0;
-  border-bottom: 1px solid #212121;
+  border-bottom: 1px solid $primary-color;
 }
 .controls {
   padding-top: 1em;
@@ -470,7 +473,7 @@ footer {
   width: 100%;
   max-height: 10vh;
   height: 100%;
-  background-color: #212121;
+  background-color: $primary-color;
   padding: 2em;
   vertical-align: middle;
   color: #fff;
@@ -562,8 +565,8 @@ footer a {
   padding-left: 1em;
   line-height: 3.5em;
   text-transform: uppercase;
-  color: #212121;
-  border: 1px solid #212121;
+  color: $primary-color;
+  border: 1px solid $primary-color;
   border-radius: 0 0.2em 0.2em 0;
 }
 
@@ -571,7 +574,7 @@ footer a {
   display: table-cell;
   width: 4.5em;
   text-align: center;
-  border: 1px solid #212121;
+  border: 1px solid $primary-color;
   border-radius: 0.2em 0 0 0.2em;
   border-right: none;
 }
@@ -587,7 +590,7 @@ label i {
 
 #user_avatar,
 #place_image {
-  border: 1px solid #212121;
+  border: 1px solid $primary-color;
   width: 25em;
   padding: 1.1em;
 }
@@ -699,5 +702,8 @@ input[value="Delete Profile"] {
   }
   .main-nav {
     width: 20%;
+  }
+  .fa-close {
+    color: $primary-color;
   }
 }
