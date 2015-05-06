@@ -23,7 +23,7 @@ html, body {
   height: 100%; 
   min-height: 100vh;
   font-size: 1em;
-  line-height: 1.5em;
+  line-height: 1.5;
   margin: 0;
   padding: 0;
 }
@@ -103,7 +103,7 @@ p {
   padding: 5em 0;
   color: #fff;
   height: 25vh;
-  line-height: 1.5em;
+  line-height: 1.5;
 }
 
 .social-signin-container,
@@ -249,7 +249,7 @@ input[type="email"] {
   display: table-cell;
   width: 13em;
   padding-left: 1em;
-  line-height: 2.5em;
+  line-height: 2.5;
   text-transform: uppercase;
   color: $primary-color;
   border: 1px solid #fff;
@@ -332,7 +332,7 @@ input[type="email"] {
 }
 
 .nav-option {
-  line-height: 1em;
+  line-height: 1;
   padding: 1.5em 0.5em 1.5em 3em;
   border-bottom: 2px solid #333;
   color: #fff;
@@ -475,7 +475,6 @@ footer {
   height: 100%;
   background-color: $primary-color;
   padding: 2em;
-  vertical-align: middle;
   color: #fff;
   position: relative;
   bottom: 0;
@@ -563,7 +562,7 @@ footer a {
   width: 25em;
   display: table-cell;
   padding-left: 1em;
-  line-height: 3.5em;
+  line-height: 3.5;
   text-transform: uppercase;
   color: $primary-color;
   border: 1px solid $primary-color;
@@ -686,6 +685,7 @@ input[value="Delete Profile"] {
     height: 75%;
     min-height: 50%;
   }
+
   .mobile-view {
     display: block;
   }
@@ -700,9 +700,11 @@ input[value="Delete Profile"] {
     display: inline-block;
     padding: 0 0.2em;
   }
+
   .main-nav {
     width: 20%;
   }
+
   .fa-close {
     color: $primary-color;
   }

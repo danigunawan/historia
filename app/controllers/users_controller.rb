@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :check_if_admin, :only => [:index, :destroy]
-  # before_action :check_if_validate_user, :only => [:edit, :update]
+  before_action :check_if_valid_user, :only => [:show, :edit, :update]
 
   def index
     if params[:search]
@@ -55,7 +55,8 @@ class UsersController < ApplicationController
   def check_if_admin
     redirect_to(root_path) unless @current_user.present? && @current_user.is_admin?
   end
-  # def check_if_validate_user
-  #   redirect_to(root_path) unless @current_user.id == User.find params[:id]
-  # end
+
+  def check_if_valid_user
+    redirect_to(root_path) unless @current_user.id == params[:id].to_i
+  end
 end
